@@ -1,50 +1,45 @@
-import 'article_source.dart';
-
 class Article {
   Article({
-    required this.source,
     this.author,
-    required this.title,
+    this.title,
     this.description,
-    required this.url,
+    this.url,
     this.urlToImage,
-    required this.publishedAt,
-    required this.content,
+    this.publishedAt,
+    this.content,
+    this.sourceName,
   });
 
-  ArticleSource? source;
   String? author;
-  String title;
+
+  String? title;
   String? description;
-  String url;
+  String? url;
   String? urlToImage;
-  DateTime? publishedAt;
+  String? publishedAt;
   String? content;
+  String? sourceName;
 
   factory Article.fromJson(Map<String, dynamic> json) => Article(
-        source: json["source"] == null
-            ? null
-            : ArticleSource.fromJson(json["source"]),
-        author: json["author"] == null ? null : json["author"],
-        title: json["title"] == null ? null : json["title"],
-        description: json["description"] == null ? null : json["description"],
-        url: json["url"] == null ? null : json["url"],
-        urlToImage: json["urlToImage"] == null ? null : json["urlToImage"],
-        publishedAt: json["publishedAt"] == null
-            ? null
-            : DateTime.parse(json["publishedAt"]),
-        content: json["content"] == null ? null : json["content"],
+        author: json["author"]?.toString(),
+        title: json["title"]?.toString(),
+        description: json["description"]?.toString(),
+        url: json["url"]?.toString(),
+        urlToImage: json["urlToImage"]?.toString(),
+        publishedAt: json["publishedAt"]?.toString(),
+        content: json["content"]?.toString(),
+        sourceName: json["source"]["name"]?.toString(),
       );
 
   Map<String, dynamic> toJson() => {
-        "source": source == null ? null : source!.toJson(),
-        "author": author == null ? null : author,
+        "sourceName": sourceName,
+        "author": author,
         "title": title,
-        "description": description == null ? null : description,
+        "id": title! + sourceName! + publishedAt!,
+        "description": description,
         "url": url,
-        "urlToImage": urlToImage == null ? null : urlToImage,
-        "publishedAt":
-            publishedAt == null ? null : publishedAt!.toIso8601String(),
-        "content": content == null ? null : content,
+        "urlToImage": urlToImage,
+        "publishedAt": publishedAt,
+        "content": content,
       };
 }

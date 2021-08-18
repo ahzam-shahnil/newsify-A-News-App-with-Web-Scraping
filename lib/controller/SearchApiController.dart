@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:news_app_test/model/article.dart';
+
+import '../model/article.dart';
 import '../service/NewsService.dart';
 
 class SearchApiController extends GetxController {

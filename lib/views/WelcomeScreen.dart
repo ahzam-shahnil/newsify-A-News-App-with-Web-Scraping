@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:news_app_test/config/constant.dart';
-import 'package:news_app_test/controller/NewsAPiController.dart';
-import 'package:news_app_test/views/CountryScreen.dart';
+
+import '../config/constant.dart';
+import '../controller/NewsAPiController.dart';
+import 'CountryScreen.dart';
 
 // class CountryScreen extends StatefulWidget {
 //   CountryScreen({Key? key}) : super(key: key);
@@ -47,7 +48,7 @@ class WelcomeScreen extends StatelessWidget {
     //?setting portrait only orientation
     // ignore: unnecessary_statements
     kPortraitOnly;
-    
+
     const pageDecoration = const PageDecoration(
       titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
       bodyTextStyle: bodyStyle,

@@ -8,19 +8,20 @@ import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:news_app_test/service/SharedStorage.dart';
-import 'package:news_app_test/service/showToast.dart';
+import 'package:newsify/controller/FavColorController.dart';
+import 'package:newsify/widgets/HomeDrawer.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:shimmer_image/shimmer_image.dart';
-
-import 'package:news_app_test/views/DetailScreen.dart';
 
 import '../config/constant.dart';
 import '../controller/NewsAPiController.dart';
 import '../controller/homeTabController.dart';
 import '../model/article.dart';
+import '../service/SharedStorage.dart';
+import '../service/showToast.dart';
 import '../theme/light_theme.dart';
+import 'DetailScreen.dart';
 import 'SearchScreen.dart';
 
 class NewsApiHomeScreen extends StatefulWidget {
@@ -64,6 +65,8 @@ class _NewsApiHomeScreenState extends State<NewsApiHomeScreen> {
     return DefaultTabController(
       length: kNewsApiCategories.length,
       child: Scaffold(
+        //TODO: implement Drawer here
+        drawer: HomeDrawer(),
         body: NestedScrollView(
             physics: ClampingScrollPhysics(),
             headerSliverBuilder:
@@ -310,8 +313,12 @@ class TopStoryLandscape extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   GestureDetector(
-                      onTap: () => Get.to(() =>
-                          DetailScreen(article: article, fromSearch: false)),
+                      onTap: () {
+                        Get.find<FavColorController>()
+                            .changeValue(article: article);
+                        Get.to(() =>
+                            DetailScreen(article: article, fromSearch: false));
+                      },
                       child: HeroImage(
                         article: article,
                         newsApiController: newsApiController,
@@ -326,7 +333,7 @@ class TopStoryLandscape extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            article.title,
+                            article.title!,
                             maxLines: 2,
                             softWrap: true,
                             overflow: TextOverflow.ellipsis,
@@ -368,7 +375,7 @@ class HeroImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag: '${article.title}${article.source!.name}false',
+      tag: '${article.title}${article.sourceName}false',
       child: article.urlToImage == null
           ? TopImageBlur(
               height: height,
@@ -542,8 +549,12 @@ class TopStoryPortrait extends StatelessWidget {
               child: Column(
                 children: [
                   GestureDetector(
-                      onTap: () => Get.to(() =>
-                          DetailScreen(article: article, fromSearch: false)),
+                      onTap: () {
+                         Get.find<FavColorController>()
+                            .changeValue(article: article);
+                        Get.to(() =>
+                            DetailScreen(article: article, fromSearch: false));
+                      },
                       child: HeroImage(
                         article: article,
                         newsApiController: newsApiController,
@@ -556,7 +567,7 @@ class TopStoryPortrait extends StatelessWidget {
                   ),
                   Flexible(
                     child: Text(
-                      article.title,
+                      article.title!,
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -653,7 +664,8 @@ class AuthorDateRow extends StatelessWidget {
               icon: Icon(Icons.calendar_today_outlined,
                   color: Colors.blueGrey.shade200),
               label: Text(
-                formatDate(article.publishedAt!, [d, '-', M, '-', yyyy]),
+                formatDate(DateTime.tryParse(article.publishedAt!)!,
+                    [d, '-', M, '-', yyyy]),
                 style: Get.textTheme.headline4!.copyWith(
                   fontWeight: FontWeight.w600,
                   fontSize: Get.size.shortestSide * 0.035,
@@ -679,12 +691,14 @@ class AuthorText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       article.author == null
-          ? article.source!.name.isURL
+          ? article.sourceName!.isURL && (article.sourceName!.length > 12)
               ? "Unknown"
-              : article.source!.name
-          : article.author!.isURL
-              ? article.source!.name
-              : article.author!,
+              : article.sourceName!.capitalize!
+          : article.author!.isURL || (article.author!.length > 7)
+              ? article.sourceName!.isURL && (article.sourceName!.length > 12)
+                  ? "Unknown"
+                  : article.sourceName!.capitalize!
+              : article.author!.capitalize!,
       style: Get.textTheme.headline4!.copyWith(
         fontWeight: FontWeight.w600,
         fontSize: Get.size.shortestSide * 0.033,
@@ -875,7 +889,11 @@ class PullToRefreshNewsTile extends StatelessWidget {
       header: WaterDropHeader(),
       onRefresh: _onRefresh,
       child: NewsTile(
-          article: article, physics: physics, isSearchTile: isSearchTile),
+        article: article,
+        physics: physics,
+        isSearchTile: isSearchTile,
+        toEnableHero: true,
+      ),
     );
   }
 }
@@ -886,84 +904,97 @@ class NewsTile extends StatelessWidget {
     required this.article,
     required this.physics,
     required this.isSearchTile,
+    required this.toEnableHero,
   }) : super(key: key);
 
   final List<Article> article;
   final ScrollPhysics physics;
   final bool isSearchTile;
+  final bool toEnableHero;
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => ListView.separated(
-          addAutomaticKeepAlives: true,
-          shrinkWrap: true,
-          itemCount: article.length,
-          physics: physics,
-          separatorBuilder: (BuildContext context, int index) => index != 0
-              ? const Divider()
-              : Container(
-                  height: 0,
-                  width: 0,
-                ),
-          itemBuilder: (BuildContext context, int index) {
-            return index != 0
-                ? AnimationConfiguration.staggeredList(
-                    position: index,
-                    duration: const Duration(milliseconds: 375),
-                    child: SlideAnimation(
-                      verticalOffset: 50.0,
-                      child: FadeInAnimation(
-                        child: ListTile(
-                            onTap: () => Get.to(() => DetailScreen(
-                                  article: article[index],
-                                  fromSearch: isSearchTile,
-                                )),
-                            title: Text(
-                              '${article[index].title}',
-                            ),
-                            leading: article[index].urlToImage == null
-                                ? Hero(
-                                    tag:
-                                        '${article[index].title}${article[index].source!.name}$isSearchTile',
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      clipBehavior: Clip.hardEdge,
-                                      child: ClipRContainer(
-                                        width: Get.size.shortestSide * 0.25,
-                                        height: Get.size.shortestSide * 0.17,
-                                        child: BlurHash(
-                                            hash:
-                                                "L5H2EC=PM+yV0g-mq.wG9c010J}I"),
-                                      ),
+    return ListView.separated(
+      addAutomaticKeepAlives: true,
+      shrinkWrap: true,
+      itemCount: article.length,
+      physics: physics,
+      separatorBuilder: (BuildContext context, int index) => index != 0
+          ? const Divider()
+          : Container(
+              height: 0,
+              width: 0,
+            ),
+      itemBuilder: (BuildContext context, int index) {
+        return index != 0
+            ? AnimationConfiguration.staggeredList(
+                position: index,
+                duration: const Duration(milliseconds: 375),
+                child: SlideAnimation(
+                  verticalOffset: 50.0,
+                  child: FadeInAnimation(
+                    child: Obx(() => ListTile(
+                        onTap: () {
+                          Get.find<FavColorController>()
+                              .changeValue(article: article[index]);
+                          Get.to(() => DetailScreen(
+                                article: article[index],
+                                fromSearch: isSearchTile,
+                              ));
+                        },
+                        title: Text(
+                          '${article[index].title!}',
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        leading: article[index].urlToImage == null
+                            ? HeroMode(
+                                enabled: toEnableHero,
+                                child: Hero(
+                                  tag:
+                                      '${article[index].title}${article[index].sourceName}',
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    clipBehavior: Clip.hardEdge,
+                                    child: ClipRContainer(
+                                      width: Get.size.shortestSide * 0.25,
+                                      height: Get.size.shortestSide * 0.17,
+                                      child: BlurHash(
+                                          hash: "L5H2EC=PM+yV0g-mq.wG9c010J}I"),
                                     ),
-                                  )
-                                : Hero(
-                                    tag:
-                                        '${article[index].title}${article[index].source!.name}$isSearchTile',
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      clipBehavior: Clip.hardEdge,
-                                      child: Container(
-                                        child: ProgressiveImage(
-                                          fit: BoxFit.fill,
-                                          width: Get.size.shortestSide * 0.25,
-                                          image: article[index].urlToImage!,
-                                          height: Get.size.shortestSide * 0.17,
-                                          imageError:
-                                              'assets/images/place_holder.jpg',
-                                        ),
+                                  ),
+                                ),
+                              )
+                            : HeroMode(
+                                enabled: toEnableHero,
+                                child: Hero(
+                                  tag:
+                                      '${article[index].title}${article[index].sourceName}',
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    clipBehavior: Clip.hardEdge,
+                                    child: Container(
+                                      child: ProgressiveImage(
+                                        fit: BoxFit.fill,
+                                        width: Get.size.shortestSide * 0.25,
+                                        image: article[index].urlToImage!,
+                                        height: Get.size.shortestSide * 0.17,
+                                        imageError:
+                                            'assets/images/place_holder.jpg',
                                       ),
                                     ),
                                   ),
-                            subtitle: AuthorDateRow(article: article[index])),
-                      ),
-                    ),
-                  )
-                : Container(
-                    height: 0,
-                    width: 0,
-                  );
-          },
-        ));
+                                ),
+                              ),
+                        subtitle: AuthorDateRow(article: article[index]))),
+                  ),
+                ),
+              )
+            : Container(
+                height: 0,
+                width: 0,
+              );
+      },
+    );
   }
 }

@@ -3,12 +3,13 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:news_app_test/config/constant.dart';
-import 'package:news_app_test/config/country_config.dart';
-import 'package:news_app_test/controller/NewsAPiController.dart';
-import 'package:news_app_test/service/showToast.dart';
-import 'package:news_app_test/views/NewsApiHomeScreen.dart';
 import 'package:search_choices/search_choices.dart';
+
+import '../config/constant.dart';
+import '../config/country_config.dart';
+import '../controller/NewsAPiController.dart';
+import '../service/showToast.dart';
+import 'NewsApiHomeScreen.dart';
 
 class CountryScreen extends StatelessWidget {
   CountryScreen({Key? key}) : super(key: key);

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:news_app_test/config/constant.dart';
-import 'package:news_app_test/service/showToast.dart';
+import '../config/constant.dart';
+import '../service/showToast.dart';
 
 import '../config/country_config.dart';
 import '../model/article.dart';

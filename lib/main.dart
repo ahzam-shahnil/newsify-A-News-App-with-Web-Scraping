@@ -2,14 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:news_app_test/views/NewsApiHomeScreen.dart';
+import 'package:newsify/controller/FavColorController.dart';
+
+import 'views/NewsApiHomeScreen.dart';
 
 import 'config/country_config.dart';
-import 'controller/SearchApiController.dart';
-import 'views/WelcomeScreen.dart';
-
-import 'theme/light_theme.dart';
 import 'controller/NewsAPiController.dart';
+import 'controller/SearchApiController.dart';
+import 'theme/light_theme.dart';
+import 'views/WelcomeScreen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
 
   final searchController =
       Get.lazyPut(() => SearchApiController(), fenix: true);
+  final favController = Get.lazyPut(() => FavColorController(), fenix: true);
 
   @override
   Widget build(BuildContext context) {

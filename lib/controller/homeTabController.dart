@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:news_app_test/config/constant.dart';
+import '../config/constant.dart';
 
 
 class HomeTabController extends GetxController with SingleGetTickerProviderMixin {

@@ -1,6 +1,6 @@
 //* country code list
 import 'package:get/get.dart';
-import 'package:news_app_test/controller/NewsAPiController.dart';
+import '../controller/NewsAPiController.dart';
 
 List<String> countryCodeList = [
   'ae',

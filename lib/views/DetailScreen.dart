@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:news_app_test/model/article.dart';
+import 'package:newsify/controller/FavColorController.dart';
+import 'package:newsify/functions/HelperFunction.dart';
+import 'package:newsify/service/Dbhelper.dart';
+import 'package:share_plus/share_plus.dart';
+import '../model/article.dart';
 
 import 'NewsApiHomeScreen.dart';
 
@@ -10,22 +14,35 @@ class DetailScreen extends StatelessWidget {
       : super(key: key);
   final Article article;
   final Logger log = Logger();
+  final DbHelper dbhelper = DbHelper();
   final bool fromSearch;
+
   @override
   Widget build(BuildContext context) {
-    log.i(article.title);
     return Scaffold(
       appBar: AppBar(
         shadowColor: Colors.transparent,
         actions: [
-          //TODO: implement Save Article here
           IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.bookmark_border_outlined),
+            onPressed: () async {
+              await dbhelper.insertArticle(article);
+            },
+            icon: Obx(() => Icon(
+                  Icons.bookmark,
+                  color: Get.find<FavColorController>().favColor.value
+                      ? Colors.blue
+                      : Colors.grey,
+                )),
           ),
-          //TODO: implement Share Article here
           IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              final box = context.findRenderObject() as RenderBox?;
+              await Share.share(
+                  '*${formatTitle(title: article.title!).trim()}*\n ${formatDescription(desc: article.description)}\n ${formatContent(content: article.content, description: article.description)} \n Article link : ${article.url}',
+                  subject: article.title,
+                  sharePositionOrigin:
+                      box!.localToGlobal(Offset.zero) & box.size);
+            },
             icon: Icon(
               Icons.share_outlined,
             ),
@@ -45,14 +62,14 @@ class DetailScreen extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: article.urlToImage == null
                   ? Hero(
-                      tag: '${article.title}${article.source!.name}$fromSearch',
+                      tag: '${article.title}${article.sourceName}$fromSearch',
                       child: TopImageBlur(
                         height: Get.size.shortestSide * 0.5,
                         width: Get.size.shortestSide,
                       ),
                     )
                   : Hero(
-                      tag: '${article.title}${article.source!.name}$fromSearch',
+                      tag: '${article.title}${article.sourceName}$fromSearch',
                       child: TopStoryImage(
                         height: Get.size.shortestSide * 0.5,
                         width: Get.size.shortestSide,
@@ -65,11 +82,7 @@ class DetailScreen extends StatelessWidget {
             ),
             //? title of article
             Text(
-              article.title.substring(
-                  0,
-                  article.title.contains('-')
-                      ? article.title.lastIndexOf('-')
-                      : article.title.length - 1),
+              formatTitle(title: article.title!),
               style: Get.textTheme.headline5!.copyWith(
                 fontWeight: FontWeight.w500,
                 color: Colors.green,
@@ -104,13 +117,7 @@ class DetailScreen extends StatelessWidget {
             ),
             //? Description text
             Text(
-              article.description == null
-                  ? 'No description available'
-                  : article.description!.isCaseInsensitiveContains('<p>')
-                      ? article.description!
-                          .replaceAll('<p>', '')
-                          .replaceAll('</p>', '')
-                      : article.description!.toTitleCase(),
+              formatDescription(desc: article.description),
               style: Get.textTheme.headline4!.copyWith(
                 fontWeight: FontWeight.w600,
                 fontSize: Get.size.shortestSide * 0.045,
@@ -119,37 +126,8 @@ class DetailScreen extends StatelessWidget {
 
             //? Content
             Text(
-              article.content != null
-                  ? article.description!
-                          .toLowerCase()
-                          .contains((article.content!
-                              .substring(
-                                0,
-                                article.content!.length ~/ 2,
-                              )
-                              .toLowerCase()))
-                      ? ''
-                      : article.content!.contains('caption')
-                          ? article.content!
-                              .substring(
-                                article.content!.length ~/ 2,
-                                article.content!.indexOf('['),
-                              )
-                              .toTitleCase()
-                          : article.content!.contains('[')
-                              ? article.content!
-                                  .substring(
-                                    0,
-                                    article.content!.indexOf('['),
-                                  )
-                                  .toTitleCase()
-                              : article.content!
-                                      .isCaseInsensitiveContains('<p>')
-                                  ? article.content!
-                                      .replaceAll('<p>', '')
-                                      .replaceAll('</p>', '')
-                                  : article.content!.toTitleCase()
-                  : 'No content available',
+              formatContent(
+                  content: article.content, description: article.description),
               style: Get.textTheme.headline4!.copyWith(
                 fontWeight: FontWeight.w600,
                 fontSize: Get.size.shortestSide * 0.045,

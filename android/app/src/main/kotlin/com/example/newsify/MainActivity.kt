@@ -1,4 +1,4 @@
-package com.example.news_app_test
+package com.example.newsify
 
 import io.flutter.embedding.android.FlutterActivity
 

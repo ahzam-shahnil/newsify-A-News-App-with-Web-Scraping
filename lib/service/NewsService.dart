@@ -1,9 +1,10 @@
 
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
-import 'package:news_app_test/config/environment_config.dart';
-import 'package:news_app_test/config/newsInterceptor.dart';
-import 'package:news_app_test/config/news_exceptions.dart';
+
+import '../config/environment_config.dart';
+import '../config/newsInterceptor.dart';
+import '../config/news_exceptions.dart';
 
 const BASE_URL = "https://newsapi.org/";
 

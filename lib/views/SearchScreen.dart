@@ -4,10 +4,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
-import 'package:news_app_test/config/sortBy_fillter.dart';
-import 'package:news_app_test/controller/SearchApiController.dart';
-import 'package:news_app_test/theme/light_theme.dart';
-import 'package:news_app_test/views/NewsApiHomeScreen.dart';
+
+import '../config/sortBy_fillter.dart';
+import '../controller/SearchApiController.dart';
+import '../theme/light_theme.dart';
+import 'NewsApiHomeScreen.dart';
 
 class SearchScreen extends StatefulWidget {
   SearchScreen({Key? key}) : super(key: key);
@@ -127,6 +128,7 @@ class _SearchScreenState extends State<SearchScreen> {
         article: searchController.articleList,
         physics: NeverScrollableScrollPhysics(),
         isSearchTile: true,
+        toEnableHero: true,
       ),
     );
   }
