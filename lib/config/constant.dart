@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 const kBaseUrl = 'https://newsapi.org/';
-
+const kPlayStoreLink =
+    'https://play.google.com/store/apps/details?id=com.proapps.newsify';
+const kAppName = 'Newsify';
 //? Orientation
 var kAllOrientation = SystemChrome.setPreferredOrientations([
   DeviceOrientation.portraitUp,

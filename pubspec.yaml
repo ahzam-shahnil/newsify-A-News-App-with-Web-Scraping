@@ -2,12 +2,16 @@
 dependencies:
   animate_do: ^2.0.0
   cached_network_image: ^3.1.0
+  change_app_package_name: ^1.0.0
   cupertino_icons: ^1.0.3
   date_format: ^2.0.3
   dio: ^4.0.0
+  filesize: ^2.0.1
   flutter:
     sdk: flutter
   flutter_blurhash: ^0.6.0
+  flutter_cache_manager: ^3.1.2
+  flutter_markdown: ^0.6.4
   flutter_staggered_animations: ^1.0.0
   flutter_svg: ^0.22.0
   fluttertoast: ^8.0.7
@@ -15,15 +19,18 @@ dependencies:
   introduction_screen: ^2.1.0
   logger: ^1.0.0
   material_floating_search_bar: ^0.3.4
+  package_info_plus: ^1.0.5
+  path_provider: ^2.0.2
   pull_to_refresh: ^2.0.0
   search_choices: ^2.0.6
+  share_plus: ^2.1.4
   shared_preferences: ^2.0.6
   shimmer: ^2.0.0
   shimmer_image: ^0.0.2
   sqflite: ^2.0.0+3
   transparent_image: ^2.0.0
   url_launcher: ^6.0.9
-  share_plus: ^2.1.4
+  validators: ^3.0.0
 description: A new Flutter project.
 dev_dependencies:
   flutter_test:
@@ -33,6 +40,7 @@ environment:
 flutter:
   assets:
     - assets/images/
+    - assets/
   uses-material-design: true
 name: newsify
 publish_to: none

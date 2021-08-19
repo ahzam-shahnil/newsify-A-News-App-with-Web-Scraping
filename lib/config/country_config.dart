@@ -42,6 +42,10 @@ Map<String, String> countryMap =
 //* getter for country code
 String getCountryCode(String country) => countryMap[country]!;
 
+//? making reverse map of country to use it as a way of displaying country in settings screen
+var reversed = countryMap.map((k, v) => MapEntry(v, k));
+String getCountry(String code) => reversed[code]!;
+
 //? this method is initliazed before main app class
 //? it checks whether our is running for first time or not
 checkCountry() async {

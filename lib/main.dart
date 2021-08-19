@@ -2,15 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:newsify/controller/FavColorController.dart';
 
-import 'views/NewsApiHomeScreen.dart';
-
+import 'controller/FavColorController.dart';
 import 'config/country_config.dart';
 import 'controller/NewsAPiController.dart';
 import 'controller/SearchApiController.dart';
 import 'theme/light_theme.dart';
-import 'views/WelcomeScreen.dart';
+import 'views/IntroView/WelcomeScreen.dart';
+import 'views/mainView/HomeScreen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,14 +31,13 @@ class MyApp extends StatelessWidget {
   final searchController =
       Get.lazyPut(() => SearchApiController(), fenix: true);
   final favController = Get.lazyPut(() => FavColorController(), fenix: true);
-
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter News Demo',
+      title: 'Newsify',
       theme: lightTheme,
-      home: country.isEmpty ? WelcomeScreen() : NewsApiHomeScreen(),
+      home: country.isEmpty ? WelcomeScreen() : HomeScreen(),
     );
   }
 }
