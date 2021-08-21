@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:newsify/controller/NewsAPiController.dart';
-import 'package:newsify/controller/homeTabController.dart';
-import 'package:newsify/model/article.dart';
 
+import '../../controller/NewsAPiController.dart';
+import '../../model/article.dart';
 import '../HomeScreenWidgets/TopImageBlur.dart';
 import '../HomeScreenWidgets/TopStoryImage.dart';
 
@@ -11,14 +10,14 @@ class HeroImage extends StatelessWidget {
     Key? key,
     required this.article,
     required this.newsApiController,
-    required this.homeTabController,
+    required this.selectedIndex,
     required this.width,
     required this.height,
   }) : super(key: key);
 
   final Article article;
   final NewsApiController newsApiController;
-  final HomeTabController homeTabController;
+  final int selectedIndex;
   final double width;
   final double height;
   @override
@@ -32,7 +31,7 @@ class HeroImage extends StatelessWidget {
             )
           : TopStoryImage(
               urlToImg: newsApiController
-                  .articlesList[homeTabController.tabController.index][0]
+                  .articlesList[selectedIndex][0]
                   .urlToImage!,
               height: height,
               width: width,

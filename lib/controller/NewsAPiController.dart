@@ -10,9 +10,7 @@ import '../service/NewsService.dart';
 import '../service/SharedStorage.dart';
 
 class NewsApiController extends GetxController {
-  var retryCounter = 0.obs;
   //* Observable var  declared here
-  // var isPakistanSelcted = false.obs;
   var country = ''.obs;
   var category = 'general'.obs;
   var isLoading = true.obs;
@@ -38,23 +36,17 @@ class NewsApiController extends GetxController {
   Logger log = Logger();
   NewsService service = NewsService();
 
-  void setCountry(String selectedCountry) {
+  void setCountry({required String selectedCountry, required bool toLoad}) {
     //* here we are getting country code from countryMap
     country.value = getCountryCode(selectedCountry);
 
-    //Todo: Implement pakistan screen
-    // if (country.value == 'pk') {
-    //   setIsPakistanSelected = true;
-    // } else {
-    //   setIsPakistanSelected = false;
-    // }
     if (country.value.trim().isNotEmpty) {
       SharedStorage.saveSelectedCountry(country.value);
     }
+    if (toLoad) {
+      loadAllNews();
+    }
   }
-
-  // set setIsPakistanSelected(isPakistanSelcted) =>
-  //     this.isPakistanSelcted.value = isPakistanSelcted;
 
   void setCategory(String selectedCategory) =>
       category.value = selectedCategory.toLowerCase();
@@ -62,40 +54,10 @@ class NewsApiController extends GetxController {
   Future<void> getSavedConfig() async =>
       country.value = (await SharedStorage.getCurrentCountry()) ?? '';
 
-//   void loadNews(int index) async {
-//     // showLoading();
-//     try {
-//       articlesList[index].assignAll(await getNewsArticle());
-//     } catch (e) {
-//       // log.e(e);
-
-// //Todo: Uncomment this to enable retry functionality that retires 4 times
-//       if (retryCounter < 3) {
-//         showToast(
-//           msg: '$e. Retrying Again.',
-//           backColor: Colors.red,
-//           textColor: Colors.white,
-//         );
-//         Future.delayed(Duration(seconds: 6), () => loadNews(index));
-//         retryCounter.value++;
-//       } else {
-//         showToast(
-//           msg: "Please check your internet.",
-//           backColor: Colors.red,
-//           textColor: Colors.white,
-//         );
-
-//         Get.offAll(() => NoConnectionScreen());
-//         retryCounter.value = 0;
-//       }
-//     }
-//     // hideLoading();
-//   }
-
   loadAllNews() async {
     showLoading();
     if (!(country.trim().isAlphabetOnly.isBlank!)) {
-      for (var i = 0; i < 1; i++) {
+      for (var i = 0; i < articlesList.length; i++) {
         try {
           articlesList[i].assignAll(await getArticle(kNewsApiCategories[i]));
           isRefreshSuccess.value++;
@@ -106,35 +68,13 @@ class NewsApiController extends GetxController {
 
           //? IT IS ADDED TEMPORARILY
           showToast(
-            msg: '$e. Retrying Again.',
+            msg: '$e. Check your Internet.',
             backColor: Colors.red,
             textColor: Colors.white,
           );
-
-          // break;
-
-          // if (retryCounter < 1) {
-          //   showToast(
-          //     msg: '$e. Retrying Again.',
-          //     backColor: Colors.red,
-          //     textColor: Colors.white,
-          //   );
-          //   Future.delayed(Duration(seconds: 8), () => loadAllNews());
-          //   retryCounter.value++;
-          // } else {
-          //   showToast(
-          //     msg: "Please check your internet.",
-          //     backColor: Colors.red,
-          //     textColor: Colors.white,
-          //   );
-          //   break;
-          // }
+          break;
         }
       }
-      // if (retryCounter.value != 0) {
-      //   Get.offAll(() => NoConnectionScreen())!
-      //       .then((value) => retryCounter.value = 0);
-      // }
     }
     hideLoading();
   }
@@ -159,27 +99,6 @@ class NewsApiController extends GetxController {
     }
   }
 
-  // Future<List<Article>> getNewsArticle() async {
-  //   try {
-  //     final response = await service.getArticles(
-  //         'v2/top-headlines?country=${country.value}&category=${category.value}');
-  //     // log.i(response);
-  //     final results = List<Map<String, dynamic>>.from(
-  //       response.data['articles'],
-  //     );
-
-  //     final List<Article> articles =
-  //         List<Article>.from(results.map((x) => Article.fromJson(x)))
-  //             .toList(growable: false);
-  //     return articles;
-
-  //   } on Exception catch (e) {
-  //     // log.d("In get news  Article " + e.toString());
-
-  //     throw e;
-  //   }
-  // }
-
   void showLoading() {
     isLoading.value = true;
   }
@@ -193,8 +112,9 @@ class NewsApiController extends GetxController {
   void resetController() {
     country.value = '';
     category.value = 'general';
-    // isLoading.value = true;
-    // isPakistanSelcted.value = false;
+    isLoading.value = true;
+    isRefreshSuccess.value = 0;
+    lastRefresh.value = 0.0;
     resetAllLists();
   }
 }

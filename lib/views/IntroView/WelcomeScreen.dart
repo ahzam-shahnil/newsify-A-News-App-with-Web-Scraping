@@ -53,14 +53,16 @@ class WelcomeScreen extends StatelessWidget {
 
     return IntroductionScreen(
       key: introKey,
-      globalBackgroundColor: Get.isDarkMode ? Colors.black : Colors.white,
+      globalBackgroundColor: Get.isDarkMode
+          ? Theme.of(context).scaffoldBackgroundColor
+          : Colors.white,
 
       isBottomSafeArea: true,
       isTopSafeArea: true,
       globalFooter: SizedBox(
         width: double.infinity,
         height: 60,
-        child: ElevatedButton(
+        child: TextButton(
           child: const Text(
             'Let\s go right away!',
             style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),

@@ -11,11 +11,13 @@ class CountryPicker extends StatelessWidget {
     required this.apiPathController,
     required this.trailing,
     required this.hint,
+    required this.toLoad,
   }) : super(key: key);
 
   final NewsApiController apiPathController;
   final Widget trailing;
   final String hint;
+  final bool toLoad;
   @override
   Widget build(BuildContext context) {
     return SearchChoices.single(
@@ -26,12 +28,18 @@ class CountryPicker extends StatelessWidget {
       ),
       displayClearIcon: false,
       padding: 10,
+      searchInputDecoration: InputDecoration(
+        icon: Icon(
+          Icons.search,
+          color: Colors.green,
+          size: 24,
+        ),
+      ),
       items: countryList.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(
             value,
-            style: TextStyle(color: Colors.black),
           ),
         );
       }).toList(),
@@ -41,10 +49,9 @@ class CountryPicker extends StatelessWidget {
         style: Get.textTheme.headline6!
             .copyWith(fontSize: 16, fontWeight: FontWeight.normal),
       ),
-      // searchHint: hint,
       keyboardType: TextInputType.name,
-      onChanged: (value) => apiPathController.setCountry(value),
-      menuBackgroundColor: Colors.blue.shade300,
+      onChanged: (value) =>
+          apiPathController.setCountry(selectedCountry: value, toLoad: toLoad),
       isExpanded: true,
       buildDropDownDialog: (
         Widget titleBar,

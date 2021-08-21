@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 import '../../controller/FavColorController.dart';
 import '../../controller/NewsAPiController.dart';
-import '../../controller/homeTabController.dart';
 import '../../model/article.dart';
 import '../../views/mainView/DetailScreen.dart';
 import '../Shared/AuthorDateRow.dart';
@@ -15,12 +14,12 @@ class TopStoryLandscape extends StatelessWidget {
     Key? key,
     required this.article,
     required this.newsApiController,
-    required this.homeTabController,
+    required this.selectedIndex,
   }) : super(key: key);
 
   final Article article;
   final NewsApiController newsApiController;
-  final HomeTabController homeTabController;
+  final int selectedIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +36,7 @@ class TopStoryLandscape extends StatelessWidget {
             child: Container(
               height: Get.size.shortestSide * 0.26,
               width: Get.size.longestSide,
-              color: Colors.white,
+              color: Get.isDarkMode ? Color(0xff181E25) : Colors.white,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -51,7 +50,7 @@ class TopStoryLandscape extends StatelessWidget {
                       child: HeroImage(
                         article: article,
                         newsApiController: newsApiController,
-                        homeTabController: homeTabController,
+                        selectedIndex: selectedIndex,
                         height: Get.size.shortestSide * 0.26,
                         width: Get.size.longestSide * 0.28,
                       )),

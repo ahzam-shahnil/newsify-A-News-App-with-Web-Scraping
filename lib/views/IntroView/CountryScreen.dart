@@ -52,6 +52,7 @@ class CountryScreen extends StatelessWidget {
                       apiPathController: apiPathController,
                       trailing: Icon(Icons.arrow_drop_down),
                       hint: 'Choose Your Country',
+                      toLoad: false,
                     )),
                 SizedBox(
                   height: 20,
@@ -66,9 +67,10 @@ class CountryScreen extends StatelessWidget {
                 ),
                 CircleAvatar(
                   radius: Get.size.width * 0.08,
+                  backgroundColor: Colors.blue.shade300,
                   child: IconButton(
                       icon: Icon(
-                        Icons.navigate_next_outlined,
+                        Icons.navigate_next,
                         size: Get.size.width * 0.07,
                       ),
                       onPressed: () async {

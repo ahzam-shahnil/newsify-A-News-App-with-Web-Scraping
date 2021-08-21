@@ -3,11 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
+import '../../config/constant.dart';
 import '../../views/mainView/SavedArticleScreen.dart';
 import '../../views/mainView/SettingScreen.dart';
 
 class HomeDrawer extends StatelessWidget {
-  const HomeDrawer({
+  HomeDrawer({
     Key? key,
   }) : super(key: key);
 
@@ -21,7 +22,7 @@ class HomeDrawer extends StatelessWidget {
               margin: EdgeInsets.zero,
               padding: EdgeInsets.zero,
               child: SvgPicture.asset(
-                'assets/images/welcome.svg',
+                kLogoImgAddress,
                 fit: BoxFit.contain,
               )),
           ListTile(
@@ -41,7 +42,18 @@ class HomeDrawer extends StatelessWidget {
             focusColor: Colors.grey,
             title: const Text('Exit'),
             horizontalTitleGap: 8,
-            onTap: () => SystemNavigator.pop(),
+            onTap: () => showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                content: Text('Exit App'),
+                actions: [
+                  TextButton(
+                      onPressed: () => SystemNavigator.pop(),
+                      child: Text('YES')),
+                  TextButton(onPressed: () => Get.back(), child: Text('NO'))
+                ],
+              ),
+            ),
           ),
         ],
       ),

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:get/get.dart';
+import 'package:newsify/controller/FavColorController.dart';
 
 import '../../functions/ArticleHelperFunctions.dart';
 import '../../model/article.dart';
@@ -128,8 +129,13 @@ class _SavedArticleScreenState extends State<SavedArticleScreen> {
                     children: List.generate(
                         article.length,
                         (index) => GestureDetector(
-                              onTap: () => Get.to(DetailScreen(
-                                  article: article[index], fromSearch: false)),
+                              onTap: () {
+                                Get.find<FavColorController>()
+                                    .changeValue(article: article[index]);
+                                Get.to(DetailScreen(
+                                    article: article[index],
+                                    fromSearch: false));
+                              },
                               child: Card(
                                 semanticContainer: true,
                                 clipBehavior: Clip.hardEdge,

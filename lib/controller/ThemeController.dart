@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../service/SharedStorage.dart';
 
 class ThemeController extends GetxController {
-  var themeValue = 0.obs;
+  var themeValue = 2.obs;
   @override
   void onInit() {
     getSavedTheme();
@@ -24,5 +24,5 @@ class ThemeController extends GetxController {
   }
 
   Future<void> getSavedTheme() async =>
-      themeValue.value = (await SharedStorage.getCurrentTheme()) ?? 0;
+      themeValue.value = (await SharedStorage.getCurrentTheme()) ?? 2;
 }

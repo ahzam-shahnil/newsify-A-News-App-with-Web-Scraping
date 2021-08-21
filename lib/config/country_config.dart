@@ -1,5 +1,6 @@
 //* country code list
 import 'package:get/get.dart';
+import 'package:newsify/controller/ThemeController.dart';
 import '../controller/NewsAPiController.dart';
 
 List<String> countryCodeList = [
@@ -53,4 +54,11 @@ checkCountry() async {
   await newsApiController.getSavedConfig();
   var result = newsApiController.country.value;
   return result;
+}
+
+getThemeConfig() async {
+  final ThemeController themeController = Get.find<ThemeController>();
+  await themeController.getSavedTheme();
+  var value = themeController.themeValue.value;
+  return value;
 }

@@ -5,6 +5,9 @@ const kBaseUrl = 'https://newsapi.org/';
 const kPlayStoreLink =
     'https://play.google.com/store/apps/details?id=com.proapps.newsify';
 const kAppName = 'Newsify';
+const kGitHubUrl = 'https://github.com/ahzam-shahnil/ahzam_shahnil';
+const kInstaUrl = 'https://www.instagram.com/ahzam.shahnil/';
+const kLogoImgAddress = 'assets/images/logo.svg';
 //? Orientation
 var kAllOrientation = SystemChrome.setPreferredOrientations([
   DeviceOrientation.portraitUp,

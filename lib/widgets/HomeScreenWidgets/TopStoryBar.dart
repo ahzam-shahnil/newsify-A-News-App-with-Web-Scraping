@@ -1,9 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
+import 'package:newsify/controller/homeTabController.dart';
 
 import '../../controller/NewsAPiController.dart';
-import '../../controller/homeTabController.dart';
 import '../../model/article.dart';
 import 'ShimmerTopStoryLandscape.dart';
 import 'ShimmerTopStoryPortrait.dart';
@@ -11,48 +12,41 @@ import 'TopStoryLandscape.dart';
 import 'TopStoryPortrait.dart';
 
 class TopStoryBar extends StatelessWidget {
-  const TopStoryBar({
+  TopStoryBar({
     Key? key,
     required this.newsApiController,
-    required this.homeTabController,
   }) : super(key: key);
 
   final NewsApiController newsApiController;
-  final HomeTabController homeTabController;
 
+  final Logger log = Logger();
   @override
   Widget build(BuildContext context) {
     return FlexibleSpaceBar(
-      background: Obx(() {
-        bool isArticleEmpty = newsApiController
-            .articlesList[homeTabController.tabController.index].isEmpty;
-        var article = isArticleEmpty
-            ? []
-            : newsApiController
-                .articlesList[homeTabController.tabController.index][0];
-
-        return FadeInLeft(
-          child: SafeArea(
-            child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-                child:
-                    MediaQuery.of(context).orientation == Orientation.portrait
-                        ? isArticleEmpty
-                            ? ShimmerTopStoryPortrait()
-                            : TopStoryPortrait(
-                                article: article as Article,
-                                newsApiController: newsApiController,
-                                homeTabController: homeTabController)
-                        : isArticleEmpty
-                            ? ShimmerTopStoryLandscape()
-                            : TopStoryLandscape(
-                                article: article as Article,
-                                newsApiController: newsApiController,
-                                homeTabController: homeTabController)),
-          ),
-        );
-      }),
+      background: SafeArea(child: Obx(() {
+        final int selectedIndex = Get.find<HomeTabController>().getIndex;
+        return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+            child: MediaQuery.of(context).orientation == Orientation.portrait
+                ? newsApiController.articlesList[selectedIndex].isEmpty
+                    ? ShimmerTopStoryPortrait()
+                    : FadeInLeft(
+                        child: TopStoryPortrait(
+                            article: newsApiController
+                                .articlesList[selectedIndex][0],
+                            newsApiController: newsApiController,
+                            selectedIndex: selectedIndex),
+                      )
+                : newsApiController.articlesList[selectedIndex].isEmpty
+                    ? ShimmerTopStoryLandscape()
+                    : FadeInDown(
+                        child: TopStoryLandscape(
+                            article: newsApiController
+                                .articlesList[selectedIndex][0],
+                            newsApiController: newsApiController,
+                            selectedIndex: selectedIndex),
+                      ));
+      })),
     );
   }
 }

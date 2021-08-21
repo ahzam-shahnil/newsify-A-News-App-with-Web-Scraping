@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:newsify/controller/FavColorController.dart';
-import 'package:newsify/service/showToast.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../controller/FavColorController.dart';
 import '../model/article.dart';
+import 'showToast.dart';
 
 class DbHelper {
   static final _databasename = "newsify.db";
@@ -51,6 +51,7 @@ class DbHelper {
             "${article.sourceName}" +
             "${article.publishedAt}");
     if (isPresent) {
+      //TODO: implement Article removal here
       showToast(
           msg: 'Already Saved',
           textColor: Colors.white60,

@@ -9,7 +9,6 @@ import '../../config/constant.dart';
 import '../../controller/NewsAPiController.dart';
 import '../../controller/SettingController.dart';
 import '../../controller/homeTabController.dart';
-import '../../theme/light_theme.dart';
 import '../../widgets/HomeScreenWidgets/HomeDrawer.dart';
 import '../../widgets/HomeScreenWidgets/CircleTabIndicator.dart';
 import '../../widgets/HomeScreenWidgets/NewsTabView.dart';
@@ -24,31 +23,22 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  //* var declaration here,
-  // int _selectedIndex = 0;
   Logger log = Logger();
 
   //* Controllers
-  final homeTabController = Get.put(HomeTabController());
+  final homeTabController = Get.find<HomeTabController>();
   final newsApiController = Get.find<NewsApiController>();
   final settingController = Get.lazyPut(() => SettingController(), fenix: true);
 
   @override
   void initState() {
-    // // ignore: unnecessary_statements
-    // kAllOrientation;
+    // ignore: unnecessary_statements
+    kAllOrientation;
     newsApiController.loadAllNews();
-    // // Create TabController for getting the index of current tab
-    // homeTabController.tabController.addListener(() {
-    //   setState(() {
-    //     _selectedIndex = homeTabController.tabController.index;
-    //   });
-    //   log.i(kNewsApiCategories[_selectedIndex]);
-
-    //   //* to change category
-    //   newsApiController.setCategory(kNewsApiCategories[_selectedIndex]);
-    //   // newsApiController.loadANews(_selectedIndex);
-    // });
+    // Create TabController for getting the index of current tab
+    homeTabController.tabController.addListener(() {
+      homeTabController.setIndex = homeTabController.tabController.index;
+    });
 
     super.initState();
   }
@@ -58,7 +48,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return DefaultTabController(
       length: kNewsApiCategories.length,
       child: Scaffold(
-        //TODO: implement Drawer here
         drawer: HomeDrawer(),
         body: NestedScrollView(
             physics: ClampingScrollPhysics(),
@@ -66,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 (BuildContext context, bool innerBoxIsScrolled) {
               return <Widget>[
                 Theme(
-                  data: lightTheme.copyWith(
+                  data: Theme.of(context).copyWith(
                     highlightColor: Colors.transparent,
                     splashColor: Colors.transparent,
                   ),
@@ -88,8 +77,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         ? Get.size.longestSide * 0.58
                         : Get.size.shortestSide * 0.54,
                     flexibleSpace: TopStoryBar(
-                        newsApiController: newsApiController,
-                        homeTabController: homeTabController),
+                      newsApiController: newsApiController,
+                    ),
                     bottom: TabBar(
                         automaticIndicatorColorAdjustment: true,
                         isScrollable: true,

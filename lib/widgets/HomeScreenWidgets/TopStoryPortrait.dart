@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 import '../../controller/FavColorController.dart';
 import '../../controller/NewsAPiController.dart';
-import '../../controller/homeTabController.dart';
 import '../../model/article.dart';
 import '../../views/mainView/DetailScreen.dart';
 import '../Shared/AuthorDateRow.dart';
@@ -15,12 +14,12 @@ class TopStoryPortrait extends StatelessWidget {
     Key? key,
     required this.article,
     required this.newsApiController,
-    required this.homeTabController,
+    required this.selectedIndex,
   }) : super(key: key);
 
   final Article article;
   final NewsApiController newsApiController;
-  final HomeTabController homeTabController;
+  final int selectedIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +40,8 @@ class TopStoryPortrait extends StatelessWidget {
             child: Container(
               height: Get.size.longestSide * 0.39,
               width: Get.size.shortestSide * 0.86,
-              decoration: BoxDecoration(color: Colors.white),
+              decoration: BoxDecoration(
+                  color: Get.isDarkMode ? Color(0xff181E25) : Colors.white),
               child: Column(
                 children: [
                   GestureDetector(
@@ -54,7 +54,7 @@ class TopStoryPortrait extends StatelessWidget {
                       child: HeroImage(
                         article: article,
                         newsApiController: newsApiController,
-                        homeTabController: homeTabController,
+                       selectedIndex: selectedIndex,
                         height: Get.size.shortestSide * 0.44,
                         width: Get.size.shortestSide * 0.86,
                       )),

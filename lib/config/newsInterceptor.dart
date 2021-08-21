@@ -5,8 +5,6 @@ class NewsInterceptor extends Interceptor {
   
   Logger log = Logger();
   
-
-  // RetryNewsInterceptor({required this.requestRetrier});
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     log.i('REQUEST[${options.method}] => PATH: ${options.path}');
