@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:get/get.dart';
-import 'package:newsify/controller/FavColorController.dart';
 
+import '../../controller/FavColorController.dart';
 import '../../functions/ArticleHelperFunctions.dart';
 import '../../model/article.dart';
 import '../../service/Dbhelper.dart';
@@ -55,7 +55,7 @@ class _SavedArticleScreenState extends State<SavedArticleScreen> {
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: isFocused != true
-            ? Text(
+            ? const Text(
                 'Saved Articles',
               )
             : Row(
@@ -80,7 +80,8 @@ class _SavedArticleScreenState extends State<SavedArticleScreen> {
                             borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide.none,
                           ),
-                          contentPadding: EdgeInsets.symmetric(vertical: 0),
+                          contentPadding:
+                              const EdgeInsets.symmetric(vertical: 0),
                         ),
                       ),
                     ),
@@ -110,7 +111,7 @@ class _SavedArticleScreenState extends State<SavedArticleScreen> {
           }
         },
         child: Container(
-          margin: EdgeInsets.symmetric(vertical: 8),
+          margin: const EdgeInsets.symmetric(vertical: 8),
           child: FutureBuilder(
             future: isSearchEmpty
                 ? _dbHelper.queryAll()
@@ -130,8 +131,11 @@ class _SavedArticleScreenState extends State<SavedArticleScreen> {
                         article.length,
                         (index) => GestureDetector(
                               onTap: () {
-                                Get.find<FavColorController>()
-                                    .changeValue(article: article[index]);
+                                Get.find<FavColorController>().changeValue(
+                                  title: article[index].title,
+                                  publishedAt: article[index].publishedAt,
+                                  sourceName: article[index].sourceName,
+                                );
                                 Get.to(DetailScreen(
                                     article: article[index],
                                     fromSearch: false));
@@ -150,7 +154,7 @@ class _SavedArticleScreenState extends State<SavedArticleScreen> {
                                                   Get.size.shortestSide * 0.42,
                                               height:
                                                   Get.size.shortestSide * 0.25,
-                                              child: BlurHash(
+                                              child: const BlurHash(
                                                   hash:
                                                       "L5H2EC=PM+yV0g-mq.wG9c010J}I"),
                                             )
@@ -159,9 +163,10 @@ class _SavedArticleScreenState extends State<SavedArticleScreen> {
                                                   article[index].urlToImage!,
                                               placeholder: (context, url) =>
                                                   Container(
-                                                padding: EdgeInsets.all(10),
+                                                padding:
+                                                    const EdgeInsets.all(10),
                                                 child:
-                                                    CircularProgressIndicator(),
+                                                    const CircularProgressIndicator(),
                                               ),
                                               errorWidget:
                                                   (context, url, error) =>
@@ -170,7 +175,7 @@ class _SavedArticleScreenState extends State<SavedArticleScreen> {
                                                     0.42,
                                                 height: Get.size.shortestSide *
                                                     0.25,
-                                                child: BlurHash(
+                                                child: const BlurHash(
                                                     hash:
                                                         "L5H2EC=PM+yV0g-mq.wG9c010J}I"),
                                               ),
@@ -201,8 +206,8 @@ class _SavedArticleScreenState extends State<SavedArticleScreen> {
                               ),
                             )));
               } else {
-                return Center(
-                  child: CircularProgressIndicator(),
+                return const Center(
+                  child: const CircularProgressIndicator(),
                 );
               }
             },

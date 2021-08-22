@@ -7,17 +7,20 @@ dependencies:
   date_format: ^2.0.3
   dio: ^4.0.0
   filesize: ^2.0.1
+  firebase_analytics: ^8.3.0
+  firebase_core: ^1.5.0
+  firebase_messaging: ^10.0.5
   flutter:
     sdk: flutter
   flutter_blurhash: ^0.6.0
   flutter_cache_manager: ^3.1.2
+  flutter_local_notifications: ^8.1.1+1
   flutter_markdown: ^0.6.4
   flutter_staggered_animations: ^1.0.0
   flutter_svg: ^0.22.0
   fluttertoast: ^8.0.7
   get: ^4.2.4
   introduction_screen: ^2.1.0
-  logger: ^1.0.0
   material_floating_search_bar: ^0.3.4
   package_info_plus: ^1.0.5
   path_provider: ^2.0.2
@@ -32,6 +35,8 @@ dependencies:
   validators: ^3.0.0
 description: A new Flutter project.
 dev_dependencies:
+  flutter_launcher_icons: ^0.9.1
+  flutter_native_splash: ^1.2.1
   flutter_test:
     sdk: flutter
 environment:
@@ -43,6 +48,10 @@ flutter:
     - assets/terms.md
     - assets/icons/
   uses-material-design: true
+flutter_icons:
+  android: launcher_icon
+  image_path: assets/icons/logo.png
+  ios: false
 name: newsify
 publish_to: none
 version: 1.0.0+1

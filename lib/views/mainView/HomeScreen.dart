@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
+import 'package:newsify/service/showToast.dart';
 
 import '../../config/constant.dart';
 import '../../controller/NewsAPiController.dart';
@@ -23,8 +23,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Logger log = Logger();
-
   //* Controllers
   final homeTabController = Get.find<HomeTabController>();
   final newsApiController = Get.find<NewsApiController>();
@@ -43,98 +41,116 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+  int exitCount = 0;
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: kNewsApiCategories.length,
       child: Scaffold(
         drawer: HomeDrawer(),
-        body: NestedScrollView(
-            physics: ClampingScrollPhysics(),
-            headerSliverBuilder:
-                (BuildContext context, bool innerBoxIsScrolled) {
-              return <Widget>[
-                Theme(
-                  data: Theme.of(context).copyWith(
-                    highlightColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                  ),
-                  child: SliverAppBar(
-                    title: Text('News'),
-                    centerTitle: MediaQuery.of(context).orientation ==
-                            Orientation.portrait
-                        ? true
-                        : false,
-                    pinned: true,
-                    floating: true,
-                    actions: [
-                      IconButton(
-                          onPressed: () => Get.to(() => SearchScreen()),
-                          icon: Icon(Icons.search_rounded))
-                    ],
-                    expandedHeight: MediaQuery.of(context).orientation ==
-                            Orientation.portrait
-                        ? Get.size.longestSide * 0.58
-                        : Get.size.shortestSide * 0.54,
-                    flexibleSpace: TopStoryBar(
-                      newsApiController: newsApiController,
+        body: WillPopScope(
+          onWillPop: () {
+            if (exitCount >= 1) {
+              return Future.value(true);
+            } else {
+              showToast(
+                  msg: 'Press again to exit',
+                  backColor: Colors.grey.shade400,
+                  textColor: Colors.black);
+              setState(() {
+                exitCount++;
+              });
+              Future.delayed(Duration(seconds: 3), () {
+                if (exitCount == 1) {
+                  setState(() {
+                    exitCount = 0;
+                  });
+                }
+              });
+              return Future.value(false);
+            }
+          },
+          child: NestedScrollView(
+              physics: const ClampingScrollPhysics(),
+              headerSliverBuilder:
+                  (BuildContext context, bool innerBoxIsScrolled) {
+                return <Widget>[
+                  Theme(
+                    data: Theme.of(context).copyWith(
+                      highlightColor: Colors.transparent,
+                      splashColor: Colors.transparent,
                     ),
-                    bottom: TabBar(
-                        automaticIndicatorColorAdjustment: true,
-                        isScrollable: true,
-                        indicator: CircleTabIndicator(
-                            color: Colors.blue,
-                            radius: 3,
-                            isPortrait: MediaQuery.of(context).orientation ==
-                                Orientation.portrait),
-                        labelColor: Colors.blue,
-                        labelStyle: TextStyle(fontWeight: FontWeight.bold),
-                        unselectedLabelColor: Colors.blueGrey,
-                        controller: homeTabController.tabController,
-                        tabs: kNewsApiCategories
-                            .map(
-                              (e) => Tab(
-                                text: e,
-                              ),
-                            )
-                            .toList()),
+                    child: SliverAppBar(
+                      title: const Text('News'),
+                      centerTitle: MediaQuery.of(context).orientation ==
+                              Orientation.portrait
+                          ? true
+                          : false,
+                      pinned: true,
+                      floating: true,
+                      actions: [
+                        IconButton(
+                            onPressed: () => Get.to(() => SearchScreen()),
+                            icon: const Icon(Icons.search_rounded))
+                      ],
+                      expandedHeight: MediaQuery.of(context).orientation ==
+                              Orientation.portrait
+                          ? Get.size.longestSide * 0.58
+                          : Get.size.shortestSide * 0.54,
+                      flexibleSpace: TopStoryBar(
+                        newsApiController: newsApiController,
+                      ),
+                      bottom: TabBar(
+                          automaticIndicatorColorAdjustment: true,
+                          isScrollable: true,
+                          indicator: CircleTabIndicator(
+                              color: Colors.blue,
+                              radius: 3,
+                              isPortrait: MediaQuery.of(context).orientation ==
+                                  Orientation.portrait),
+                          labelColor: Colors.blue,
+                          labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                          unselectedLabelColor: Colors.blueGrey,
+                          controller: homeTabController.tabController,
+                          tabs: kNewsApiCategories
+                              .map(
+                                (e) => Tab(
+                                  text: e,
+                                ),
+                              )
+                              .toList()),
+                    ),
                   ),
-                ),
-              ];
-            },
-            body: TabBarView(
-              controller: homeTabController.tabController,
-              children: <Widget>[
-                NewsTabView(
-                  article: newsApiController.articlesList[0],
-                  category: newsApiController.category.value,
-                ),
-                NewsTabView(
-                  article: newsApiController.articlesList[1],
-                  category: newsApiController.category.value,
-                ),
-                NewsTabView(
-                  article: newsApiController.articlesList[2],
-                  category: newsApiController.category.value,
-                ),
-                NewsTabView(
-                  article: newsApiController.articlesList[3],
-                  category: newsApiController.category.value,
-                ),
-                NewsTabView(
-                  article: newsApiController.articlesList[4],
-                  category: newsApiController.category.value,
-                ),
-                NewsTabView(
-                  article: newsApiController.articlesList[5],
-                  category: newsApiController.category.value,
-                ),
-                NewsTabView(
-                  article: newsApiController.articlesList[6],
-                  category: newsApiController.category.value,
-                ),
-              ],
-            )),
+                ];
+              },
+              body: TabBarView(
+                controller: homeTabController.tabController,
+                children: <Widget>[
+                  NewsTabView(
+                    articleList: newsApiController.articlesList[0],
+                  ),
+                  NewsTabView(
+                    articleList: newsApiController.articlesList[1],
+                  ),
+                  NewsTabView(
+                    articleList: newsApiController.articlesList[2],
+                  ),
+                  NewsTabView(
+                    articleList: newsApiController.articlesList[3],
+                  ),
+                  NewsTabView(
+                    articleList: newsApiController.articlesList[4],
+                  ),
+                  NewsTabView(
+                    articleList: newsApiController.articlesList[5],
+                  ),
+                  NewsTabView(
+                    articleList: newsApiController.articlesList[6],
+                  ),
+                ],
+              )),
+        ),
       ),
     );
   }

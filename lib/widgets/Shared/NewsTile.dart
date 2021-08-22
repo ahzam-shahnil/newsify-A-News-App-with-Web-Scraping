@@ -48,8 +48,10 @@ class NewsTile extends StatelessWidget {
                   child: FadeInAnimation(
                     child: Obx(() => ListTile(
                         onTap: () {
-                          Get.find<FavColorController>()
-                              .changeValue(article: article[index]);
+                          Get.find<FavColorController>().changeValue(
+                              title: article[index].title,
+                              publishedAt: article[index].publishedAt,
+                              sourceName: article[index].sourceName);
                           Get.to(() => DetailScreen(
                                 article: article[index],
                                 fromSearch: isSearchTile,
@@ -64,32 +66,32 @@ class NewsTile extends StatelessWidget {
                           tag:
                               '${article[index].title}${article[index].sourceName}$isSearchTile',
                           child: article[index].urlToImage == null
-                              ? ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  clipBehavior: Clip.hardEdge,
-                                  child: ClipRContainer(
-                                    width: Get.size.shortestSide * 0.25,
-                                    height: Get.size.shortestSide * 0.17,
-                                    child: BlurHash(
-                                        hash: "L5H2EC=PM+yV0g-mq.wG9c010J}I"),
-                                  ),
+                              ? ClipRContainer(
+                                  width: Get.size.shortestSide * 0.25,
+                                  height: Get.size.shortestSide * 0.17,
+                                  child: const BlurHash(
+                                      hash: "L5H2EC=PM+yV0g-mq.wG9c010J}I"),
                                 )
-                              : ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
+                              : Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
                                   clipBehavior: Clip.hardEdge,
-                                  child: Container(
-                                    child: ProgressiveImage(
-                                      fit: BoxFit.fill,
-                                      width: Get.size.shortestSide * 0.25,
-                                      image: article[index].urlToImage!,
-                                      height: Get.size.shortestSide * 0.17,
-                                      imageError:
-                                          'assets/images/place_holder.jpg',
-                                    ),
+                                  child: ProgressiveImage(
+                                    fit: BoxFit.fill,
+                                    width: Get.size.shortestSide * 0.25,
+                                    image: article[index].urlToImage!,
+                                    height: Get.size.shortestSide * 0.17,
+                                    imageError:
+                                        'assets/images/place_holder.jpg',
                                   ),
                                 ),
                         ),
-                        subtitle: AuthorDateRow(article: article[index]))),
+                        subtitle: AuthorDateRow(
+                          author: article[index].author,
+                          publishedAt: article[index].publishedAt,
+                          sourceName: article[index].sourceName,
+                        ))),
                   ),
                 ),
               )

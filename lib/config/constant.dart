@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-const kBaseUrl = 'https://newsapi.org/';
+// const kBaseUrl = 'https://newsapi.org/';
 const kPlayStoreLink =
     'https://play.google.com/store/apps/details?id=com.proapps.newsify';
 const kAppName = 'Newsify';
@@ -37,19 +36,19 @@ const kHealthCategory = 'health';
 const kTechnologyCategory = 'technology';
 const kSportCategory = 'sports';
 
-//? Linear gradient
-const kShimmerGradient = LinearGradient(
-  colors: [
-    Color(0xFFEBEBF4),
-    Color(0xFFF4F4F4),
-    Color(0xFFEBEBF4),
-  ],
-  stops: [
-    0.1,
-    0.3,
-    0.4,
-  ],
-  begin: Alignment(-1.0, -0.3),
-  end: Alignment(1.0, 0.3),
-  tileMode: TileMode.clamp,
-);
+// //? Linear gradient
+// const kShimmerGradient = LinearGradient(
+//   colors: [
+//     Color(0xFFEBEBF4),
+//     Color(0xFFF4F4F4),
+//     Color(0xFFEBEBF4),
+//   ],
+//   stops: [
+//     0.1,
+//     0.3,
+//     0.4,
+//   ],
+//   begin: Alignment(-1.0, -0.3),
+//   end: Alignment(1.0, 0.3),
+//   tileMode: TileMode.clamp,
+// );

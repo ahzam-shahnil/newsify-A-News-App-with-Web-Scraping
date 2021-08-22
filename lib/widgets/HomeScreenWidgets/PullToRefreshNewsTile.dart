@@ -11,12 +11,12 @@ import '../Shared/NewsTile.dart';
 class PullToRefreshNewsTile extends StatelessWidget {
   PullToRefreshNewsTile({
     Key? key,
-    required this.article,
+    required this.articleList,
     required this.physics,
     required this.isSearchTile,
   }) : super(key: key);
 
-  final List<Article> article;
+  final List<Article> articleList;
   final ScrollPhysics physics;
   final bool isSearchTile;
 
@@ -59,11 +59,11 @@ class PullToRefreshNewsTile extends StatelessWidget {
       controller: _refreshController,
       enablePullDown: true,
       enablePullUp: false,
-      header: WaterDropHeader(),
+      header:const WaterDropHeader(),
       cacheExtent: 10,
       onRefresh: _onRefresh,
       child: NewsTile(
-        article: article,
+        article: articleList,
         physics: physics,
         isSearchTile: isSearchTile,
         toEnableHero: true,

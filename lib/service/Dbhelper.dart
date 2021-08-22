@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -27,7 +26,7 @@ class DbHelper {
   String _sourceName = 'sourceName';
 
   Database? _database;
-  Logger log = Logger();
+
   // CREATE DATABSE
   Future openDb() async {
     if (_database == null) {
@@ -47,15 +46,18 @@ class DbHelper {
     await openDb();
 
     bool isPresent = await checkSavedArticle(
-        id: "${article.title!}" +
+        id: "${article.title}" +
             "${article.sourceName}" +
             "${article.publishedAt}");
     if (isPresent) {
-      //TODO: implement Article removal here
+      await deleteArticle(
+          id: "${article.title}" +
+              "${article.sourceName}" +
+              "${article.publishedAt}");
       showToast(
-          msg: 'Already Saved',
-          textColor: Colors.white60,
-          backColor: Colors.blue.shade400);
+          msg: 'Removed from Saved Articles',
+          textColor: Colors.white,
+          backColor: Colors.blueGrey);
     } else {
       await _database!
           .insert(
@@ -66,13 +68,16 @@ class DbHelper {
           .then((value) {
         taskId = value;
       });
-      Get.find<FavColorController>().changeValue(article: article);
+
       showToast(
           msg: 'Article Saved',
-          textColor: Colors.white60,
-          backColor: Colors.blue.shade400);
+          textColor: Colors.white,
+          backColor: Colors.blueGrey);
     }
-
+    Get.find<FavColorController>().changeValue(
+        title: article.title,
+        publishedAt: article.publishedAt,
+        sourceName: article.sourceName);
     return taskId;
   }
 
@@ -117,21 +122,16 @@ class DbHelper {
   // DELETE ARTICLES
   Future<void> deleteArticle({String? id}) async {
     await openDb();
-    await _database!.rawDelete("DELETE FROM $_articletable WHERE id = '$id';");
+    await _database!.rawDelete('DELETE from $_articletable WHERE id=?;', [id!]);
   }
 
   Future<bool> checkSavedArticle({
     String? id,
   }) async {
     await openDb();
-    // final List<Map<dynamic, dynamic>> maps = await _database!.rawQuery(
-    //   "SELECT * from $_articletable where id = '$id';",
-    // );
-    log.i(id);
     var x = await _database!
         .rawQuery('SELECT COUNT (*) from $_articletable WHERE id=?;', [id!]);
     var count = Sqflite.firstIntValue(x);
-    log.i(count);
     if (count != 0)
       return true;
     else

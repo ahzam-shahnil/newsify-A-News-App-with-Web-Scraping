@@ -12,12 +12,12 @@ class TextShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      child: Container(
+      child:  Container(
         width: width,
         height: height,
         decoration: BoxDecoration(
           color: Colors.grey.shade300,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius:  BorderRadius.circular(16),
         ),
       ),
       baseColor: Colors.grey.shade300,

@@ -24,12 +24,12 @@ class ShimmerAuthorDate extends StatelessWidget {
                 highlightColor: Colors.grey.shade100,
                 child: CircleAvatar(
                   radius: Get.size.shortestSide * 0.033,
-                  child: Icon(
+                  child: const Icon(
                     Icons.person,
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 8,
               ),
               TextShimmer(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import '../config/constant.dart';
 import '../service/showToast.dart';
 
@@ -33,7 +32,6 @@ class NewsApiController extends GetxController {
     <Article>[].obs,
   ].obs;
 
-  Logger log = Logger();
   NewsService service = NewsService();
 
   void setCountry({required String selectedCountry, required bool toLoad}) {
@@ -64,8 +62,6 @@ class NewsApiController extends GetxController {
           SharedStorage.saveLastRefresh(DateTime.now());
           Future.delayed(Duration(seconds: 3));
         } catch (e) {
-          log.e(e);
-
           //? IT IS ADDED TEMPORARILY
           showToast(
             msg: '$e. Check your Internet.',

@@ -14,15 +14,15 @@ class ClipRContainer extends StatelessWidget {
   final EdgeInsets? padding;
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(15),
-      clipBehavior: Clip.hardEdge,
-      child: Container(
-        padding: padding,
-        height: height,
-        width: width,
-        child: child,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
       ),
+      clipBehavior: Clip.hardEdge,
+      padding: padding,
+      height: height,
+      width: width,
+      child: child,
     );
   }
 }

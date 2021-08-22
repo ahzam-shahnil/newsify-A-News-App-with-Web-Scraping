@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -25,7 +24,6 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
-  final Logger log = Logger();
   String packageVersion = '';
 
   final settingController = Get.find<SettingController>();
@@ -62,11 +60,11 @@ class _SettingScreenState extends State<SettingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: const Text('Settings'),
         centerTitle: true,
       ),
       body: ListView.builder(
-          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
           itemCount: 1,
           itemBuilder: (context, index) => Column(
                 children: [
@@ -76,7 +74,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       onTap: () => showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
-                          title: Text('Night Mode'),
+                          title: const Text('Night Mode'),
                           content: Column(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -102,7 +100,7 @@ class _SettingScreenState extends State<SettingScreen> {
                           actions: [
                             TextButton(
                                 onPressed: () => Get.back(),
-                                child: Text('Cancel'))
+                                child: const Text('Cancel'))
                           ],
                         ),
                       ),
@@ -110,11 +108,11 @@ class _SettingScreenState extends State<SettingScreen> {
                         Icons.mode_night,
                         color: Colors.blue.shade900,
                       ),
-                      title: Text("Night Mode"),
-                      trailing: Icon(Icons.navigate_next_outlined),
+                      title: const Text("Night Mode"),
+                      trailing: const Icon(Icons.navigate_next_outlined),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   //? Location and cache card
@@ -131,7 +129,7 @@ class _SettingScreenState extends State<SettingScreen> {
                         ),
                         ListTile(
                           minVerticalPadding: 0,
-                          title: Text('Clear Cache'),
+                          title: const Text('Clear Cache'),
                           trailing: Obx(
                               () => Text(settingController.cacheSize.value)),
                           onTap: settingController.clearCache,
@@ -139,7 +137,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   //? Rate ans Share Card
@@ -148,18 +146,18 @@ class _SettingScreenState extends State<SettingScreen> {
                       children: [
                         ListTile(
                             onTap: () => UrlFunction.launchURL(kPlayStoreLink),
-                            title: Text('Rate')),
+                            title: const Text('Rate')),
                         ListTile(
                             onTap: () async {
                               await Share.share(
                                 'Check out this awesome News app Called Newsify \n $kPlayStoreLink',
                               );
                             },
-                            title: Text('Share $kAppName')),
+                            title: const Text('Share $kAppName')),
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   //? terms , policy, about and version card
@@ -172,7 +170,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                   title: 'Terms of Use',
                                   mdFilePath: 'assets/terms.md',
                                 )),
-                            title: Text('Terms of Use')),
+                            title: const Text('Terms of Use')),
 
                         //? Privacy Policy
                         ListTile(
@@ -180,7 +178,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                   title: 'Privacy Policy',
                                   mdFilePath: 'assets/privacy_policy.md',
                                 )),
-                            title: Text('Privacy Policy')),
+                            title: const Text('Privacy Policy')),
 
                         //? About Page
                         ListTile(
@@ -198,7 +196,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                       'Newsify is all about bringing legit news with a beautiful that inspires user to use the app more.'),
                                   children: <Widget>[
                                     LicensesPageListTile(
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.favorite,
                                         color: Colors.pink,
                                       ),
@@ -213,7 +211,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                         width: 35,
                                         height: 35,
                                       ),
-                                      title: Text('@ahzam.shahnil'),
+                                      title: const Text('@ahzam.shahnil'),
                                       onTap: () =>
                                           UrlFunction.launchURL(kGitHubUrl),
                                     ),
@@ -225,7 +223,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                         height: 35,
                                         fit: BoxFit.contain,
                                       ),
-                                      title: Text('@ahzam-shahnil'),
+                                      title: const Text('@ahzam-shahnil'),
                                       onTap: () =>
                                           UrlFunction.launchURL(kInstaUrl),
                                     ),
@@ -236,9 +234,9 @@ class _SettingScreenState extends State<SettingScreen> {
                                     child: SvgPicture.asset(kLogoImgAddress),
                                   ),
                                 ),
-                            title: Text('About $kAppName')),
+                            title: const Text('About $kAppName')),
                         ListTile(
-                          title: Text('Version'),
+                          title: const Text('Version'),
                           trailing: Text(packageVersion),
                         ),
                       ],

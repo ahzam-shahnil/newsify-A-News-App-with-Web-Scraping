@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 
 import '../../config/sortBy_fillter.dart';
@@ -18,7 +17,6 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   final searchController = Get.find<SearchApiController>();
-  Logger log = Logger();
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {

@@ -21,8 +21,8 @@ class DocsScreen extends StatelessWidget {
               return Markdown(data: snapshot.data!);
             }
 
-            return Center(
-              child: CircularProgressIndicator(),
+            return const Center(
+              child: const CircularProgressIndicator(),
             );
           }),
     );

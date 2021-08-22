@@ -18,7 +18,7 @@ class TopImageShimmer extends StatelessWidget {
       child: ClipRContainer(
         height: Get.size.shortestSide * 0.45,
         width: Get.size.shortestSide * 0.88,
-        child: BlurImage(),
+        child: const BlurImage(),
       ),
     );
   }

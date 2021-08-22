@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../service/SharedStorage.dart';
 
 class ThemeController extends GetxController {
+  //? 2 reprents Auto Switch Theme setting
   var themeValue = 2.obs;
   @override
   void onInit() {

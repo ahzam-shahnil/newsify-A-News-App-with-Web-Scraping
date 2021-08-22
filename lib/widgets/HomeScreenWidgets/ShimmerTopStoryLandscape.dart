@@ -15,7 +15,7 @@ class ShimmerTopStoryLandscape extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         TextShimmer(width: Get.size.longestSide * 0.21, height: 28),
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
         Row(
@@ -24,14 +24,14 @@ class ShimmerTopStoryLandscape extends StatelessWidget {
             Shimmer.fromColors(
               baseColor: Colors.grey.shade300,
               highlightColor: Colors.grey.shade100,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                clipBehavior: Clip.hardEdge,
-                child: Container(
-                    height: Get.size.shortestSide * 0.25,
-                    width: Get.size.longestSide * 0.28,
-                    child: BlurImage()),
-              ),
+              child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  clipBehavior:  Clip.hardEdge,
+                  height: Get.size.shortestSide * 0.25,
+                  width: Get.size.longestSide * 0.28,
+                  child: const BlurImage()),
             ),
             SizedBox(
               width: Get.size.longestSide * 0.04,
@@ -42,7 +42,7 @@ class ShimmerTopStoryLandscape extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextShimmer(width: Get.size.longestSide * 0.6, height: 35),
-                  SizedBox(
+                const  SizedBox(
                     height: 8,
                   ),
                   ShimmerAuthorDate()

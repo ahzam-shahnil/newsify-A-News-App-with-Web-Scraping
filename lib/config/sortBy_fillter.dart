@@ -1,9 +1,9 @@
-List<String> sortByFilter = [
+const List<String> sortByFilter = [
   'publishedAt',
   'popularity',
   'relevancy',
 ];
-List<String> sortBy = [
+const List<String> sortBy = [
   'Publish Date',
   'Popularity',
   'Similar',

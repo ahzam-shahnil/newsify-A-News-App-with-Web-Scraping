@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 
 import '../../config/constant.dart';
 import '../../controller/NewsAPiController.dart';
@@ -13,7 +12,7 @@ import '../mainView/HomeScreen.dart';
 class CountryScreen extends StatelessWidget {
   CountryScreen({Key? key}) : super(key: key);
   final apiPathController = Get.find<NewsApiController>();
-  final Logger log = Logger();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +28,7 @@ class CountryScreen extends StatelessWidget {
             itemBuilder: (context, index) => Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Align(
@@ -40,7 +39,7 @@ class CountryScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500, color: Colors.green),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Container(
@@ -50,11 +49,11 @@ class CountryScreen extends StatelessWidget {
                     ),
                     child: CountryPicker(
                       apiPathController: apiPathController,
-                      trailing: Icon(Icons.arrow_drop_down),
+                      trailing: const Icon(Icons.arrow_drop_down),
                       hint: 'Choose Your Country',
                       toLoad: false,
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(

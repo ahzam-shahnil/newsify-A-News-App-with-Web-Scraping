@@ -26,31 +26,32 @@ class HomeDrawer extends StatelessWidget {
                 fit: BoxFit.contain,
               )),
           ListTile(
-              leading: Icon(Icons.bookmark),
+              leading: const Icon(Icons.bookmark),
               horizontalTitleGap: 8,
               focusColor: Colors.grey,
               title: const Text('Saved Articles'),
-              onTap: () => Get.to(() => SavedArticleScreen())),
+              onTap: () => Get.to(() =>  SavedArticleScreen())),
           ListTile(
-              leading: Icon(Icons.settings),
+              leading: const Icon(Icons.settings),
               horizontalTitleGap: 8,
               focusColor: Colors.grey,
               title: const Text('Settings'),
               onTap: () => Get.to(() => SettingScreen())),
           ListTile(
-            leading: Icon(Icons.power_settings_new),
+            leading: const Icon(Icons.power_settings_new),
             focusColor: Colors.grey,
             title: const Text('Exit'),
             horizontalTitleGap: 8,
             onTap: () => showDialog(
               context: context,
               builder: (context) => AlertDialog(
-                content: Text('Exit App'),
+                content: const Text('Exit App'),
                 actions: [
                   TextButton(
                       onPressed: () => SystemNavigator.pop(),
-                      child: Text('YES')),
-                  TextButton(onPressed: () => Get.back(), child: Text('NO'))
+                      child: const Text('YES')),
+                  TextButton(
+                      onPressed: () => Get.back(), child: const Text('NO'))
                 ],
               ),
             ),

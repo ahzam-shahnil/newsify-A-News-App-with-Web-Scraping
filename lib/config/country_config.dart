@@ -1,9 +1,9 @@
-//* country code list
 import 'package:get/get.dart';
-import 'package:newsify/controller/ThemeController.dart';
+import '../controller/ThemeController.dart';
 import '../controller/NewsAPiController.dart';
 
-List<String> countryCodeList = [
+//* Country Code
+const List<String> countryCodeList = [
   'ae',
   'ar',
   'at',
@@ -16,11 +16,10 @@ List<String> countryCodeList = [
   'cn',
   'co',
   'cu',
-  'pk',
 ];
 
 //* country list
-List<String> countryList = [
+const List<String> countryList = [
   'U.A.E',
   'Argentina',
   'Austria',
@@ -33,7 +32,6 @@ List<String> countryList = [
   'China',
   'Colombia',
   'Cuba',
-  'Pakistan',
 ];
 
 //* Language Map used for user selection

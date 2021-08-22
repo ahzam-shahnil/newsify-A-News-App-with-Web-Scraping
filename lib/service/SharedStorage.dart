@@ -1,7 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedStorage {
-  //Selected Country
   static String selectedCountry = '';
   static String lastRefresh = 'time';
   static String themeValue = '0';

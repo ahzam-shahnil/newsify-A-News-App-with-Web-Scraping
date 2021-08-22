@@ -1,6 +1,4 @@
-
 import 'package:dio/dio.dart';
-import 'package:logger/logger.dart';
 
 import '../config/environment_config.dart';
 import '../config/newsInterceptor.dart';
@@ -13,7 +11,6 @@ class NewsService {
     init();
   }
   late Dio _dio;
-  Logger log = Logger();
 
   EnvironmentConfig environmentConfig = EnvironmentConfig();
 
@@ -24,17 +21,16 @@ class NewsService {
         path,
       );
     } on DioError catch (e) {
-      if (e.response != null) {
-        log.e(
-            'Status : ${e.response?.statusCode} \n Data : ${e.response?.data} \n Headers : ${e.response?.headers}');
-      } else {
-        log.e('Error Sending Request \n ${e.message}');
-      }
+      // if (e.response != null) {
+      //   log.e(
+      //       'Status : ${e.response?.statusCode} \n Data : ${e.response?.data} \n Headers : ${e.response?.headers}');
+      // } else {
+      //   log.e('Error Sending Request \n ${e.message}');
+      // }
       throw NewsExceptions.fromDioError(e);
     }
     return response;
   }
-
 
   void init() {
     var options = BaseOptions(
@@ -44,7 +40,6 @@ class NewsService {
       receiveTimeout: 3000,
     );
     _dio = Dio(options);
-    
 
     _dio.interceptors.add(NewsInterceptor());
   }

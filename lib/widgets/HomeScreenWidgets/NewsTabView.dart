@@ -8,19 +8,17 @@ import 'ShimmerNewsTabView.dart';
 class NewsTabView extends StatelessWidget {
   const NewsTabView({
     Key? key,
-    required this.category,
-    required this.article,
+    required this.articleList,
   }) : super(key: key);
 
-  final String category;
-  final List<Article> article;
+  final List<Article> articleList;
 
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => article.isNotEmpty
+      () => articleList.isNotEmpty
           ? PullToRefreshNewsTile(
-              article: article,
+              articleList: articleList,
               physics: NeverScrollableScrollPhysics(),
               isSearchTile: false,
             )

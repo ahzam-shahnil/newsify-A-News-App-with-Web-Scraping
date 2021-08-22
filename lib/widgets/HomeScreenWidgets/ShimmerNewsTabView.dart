@@ -20,15 +20,12 @@ class ShimmerNewsTabView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                   ),
                 ),
-                leading: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  clipBehavior: Clip.hardEdge,
-                  child: Container(
-                    width: Get.size.shortestSide * 0.25,
-                    height: Get.size.shortestSide * 0.17,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                    ),
+                leading: Container(
+                  width: Get.size.shortestSide * 0.25,
+                  height: Get.size.shortestSide * 0.17,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
               ),

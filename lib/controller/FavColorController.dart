@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:newsify/model/article.dart';
+
 import '../service/Dbhelper.dart';
 
 class FavColorController extends GetxController {
@@ -7,10 +7,12 @@ class FavColorController extends GetxController {
   final DbHelper _dbHelper = DbHelper();
   var id = "".obs;
 
-  void changeValue({Article? article}) {
-    this.id.value = "${article?.title!}" +
-        "${article?.sourceName!}" +
-        "${article?.publishedAt!}";
+  void changeValue({
+    String? title,
+    String? sourceName,
+    String? publishedAt,
+  }) {
+    this.id.value = title! + sourceName! + publishedAt!;
     changeColor();
   }
 

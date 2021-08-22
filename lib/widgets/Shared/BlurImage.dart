@@ -8,6 +8,6 @@ class BlurImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlurHash(hash: "L5H2EC=PM+yV0g-mq.wG9c010J}I");
+    return const BlurHash(hash: "L5H2EC=PM+yV0g-mq.wG9c010J}I");
   }
 }

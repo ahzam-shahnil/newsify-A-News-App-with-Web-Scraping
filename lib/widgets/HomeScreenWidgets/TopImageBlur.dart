@@ -16,7 +16,7 @@ class TopImageBlur extends StatelessWidget {
     return ClipRContainer(
       height: height,
       width: width,
-      child: BlurImage(),
+      child:const BlurImage(),
     );
   }
 }

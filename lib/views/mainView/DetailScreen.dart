@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../controller/FavColorController.dart';
@@ -17,7 +16,6 @@ class DetailScreen extends StatelessWidget {
   DetailScreen({Key? key, required this.article, required this.fromSearch})
       : super(key: key);
   final Article article;
-  final Logger log = Logger();
   final DbHelper dbhelper = DbHelper();
   final bool fromSearch;
 
@@ -50,7 +48,7 @@ Article link : ${article.url}''',
                   sharePositionOrigin:
                       box!.localToGlobal(Offset.zero) & box.size);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.share_outlined,
             ),
           ),
@@ -84,7 +82,7 @@ Article link : ${article.url}''',
                       ),
                     ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             //? title of article
@@ -95,7 +93,7 @@ Article link : ${article.url}''',
                 color: Colors.green,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
@@ -107,7 +105,10 @@ Article link : ${article.url}''',
                     fontSize: Get.size.shortestSide * 0.033,
                   ),
                 ),
-                AuthorText(article: article),
+                AuthorText(
+                  author: article.author,
+                  sourceName: article.sourceName,
+                ),
               ],
             ),
 
@@ -145,7 +146,7 @@ Article link : ${article.url}''',
               alignment: Alignment.center,
               child: TextButton(
                 onPressed: () async => UrlFunction.launchURL(article.url!),
-                child: Text('Read More'),
+                child: const Text('Read More'),
               ),
             )
           ],

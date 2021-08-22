@@ -19,18 +19,18 @@ class ShimmerTopStoryPortrait extends StatelessWidget {
               height: 30,
               width: Get.size.shortestSide * 0.48,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TopImageShimmer(),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextShimmer(
               height: 35,
               width: Get.size.shortestSide * 0.88,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             ShimmerAuthorDate()

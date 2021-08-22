@@ -37,7 +37,7 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const bodyStyle = TextStyle(fontSize: 19.0);
+    const bodyStyle = const TextStyle(fontSize: 19.0);
 
     //?setting portrait only orientation
     // ignore: unnecessary_statements

@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/newsify.iml" filepath="$PROJECT_DIR$/newsify.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android/newsify_android.iml" filepath="$PROJECT_DIR$/android/newsify_android.iml" />
     </modules>
   </component>
 </project>

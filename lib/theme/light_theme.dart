@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    visualDensity: VisualDensity(vertical: 0.5, horizontal: 0.5),
-    primarySwatch: MaterialColor(
+    visualDensity: const VisualDensity(vertical: 0.5, horizontal: 0.5),
+    primarySwatch: const MaterialColor(
       0xFFFAF9FE,
       <int, Color>{
         50: const Color(0xffe1e0e5), //10%
@@ -19,62 +19,58 @@ ThemeData lightTheme = ThemeData(
         900: const Color(0xff000000), //
       },
     ),
-    primaryColor: Color(0xfffbfaff),
+    primaryColor: const Color(0xfffbfaff),
     primaryColorBrightness: Brightness.light,
-    primaryColorLight: Color(0xffb0b5b3),
+    primaryColorLight: const Color(0xffb0b5b3),
     primaryColorDark: Colors.blue,
-    canvasColor: Color(0xfff0efeb),
-    accentColor: Color(0xff457BE0),
+    canvasColor: const Color(0xfff0efeb),
+    accentColor: const Color(0xff457BE0),
     accentColorBrightness: Brightness.light,
-    scaffoldBackgroundColor: Color(0xffe9ecef),
-    appBarTheme: AppBarTheme(backgroundColor: Color(0xffe9ecef)),
+    scaffoldBackgroundColor: const Color(0xffe9ecef),
+    appBarTheme: AppBarTheme(backgroundColor: const Color(0xffe9ecef)),
     cardColor: Colors.grey.shade200,
-    dividerColor: Color(0xffced4da),
-    focusColor: Color(0x1aF5E0C3),
-    hoverColor: Color(0xffDEC29B),
-    highlightColor: Color(0xffd8e2dc),
-    splashColor: Color(0xff457BE0),
+    dividerColor: const Color(0xffced4da),
+    focusColor: const Color(0x1aF5E0C3),
+    hoverColor: const Color(0xffDEC29B),
+    highlightColor: const Color(0xffd8e2dc),
+    splashColor: const Color(0xff457BE0),
 //  splashFactory: # override create method from  InteractiveInkFeatureFactory
     selectedRowColor: Colors.grey,
     unselectedWidgetColor: Colors.grey.shade400,
     disabledColor: Colors.grey.shade200,
-    buttonTheme: ButtonThemeData(buttonColor: Colors.red),
+    buttonTheme: const ButtonThemeData(buttonColor: Colors.red),
     toggleButtonsTheme: ToggleButtonsThemeData(
         //toggle button theme
         ),
-    buttonColor: Color(0xff4f5d75),
+    buttonColor: const Color(0xff4f5d75),
     textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
       backgroundColor: Colors.green,
     )),
     secondaryHeaderColor: Colors.grey,
-    backgroundColor: Color(0xff457BE0),
+    backgroundColor: const Color(0xff457BE0),
     dialogBackgroundColor: Colors.white,
-    indicatorColor: Color(0xff457BE0),
+    indicatorColor: const Color(0xff457BE0),
     hintColor: Colors.black,
     errorColor: Colors.red,
-    toggleableActiveColor: Color(0xff6D42CE),
+    toggleableActiveColor: const Color(0xff6D42CE),
     textTheme: TextTheme(
-        //text themes that contrast with card and canvas
+      
         ),
-    primaryTextTheme: TextTheme(headline4: TextStyle(color: Colors.blue)),
+    primaryTextTheme: const TextTheme(headline4: TextStyle(color: Colors.blue)),
     accentTextTheme: TextTheme(
         //text theme that contrast with accent Color
         ),
     inputDecorationTheme: InputDecorationTheme(
         // default values for InputDecorator, TextField, and TextFormField
         ),
-    iconTheme: IconThemeData(color: Colors.green),
-    primaryIconTheme: IconThemeData(
-        //icon themes that contrast primary color
-        ),
-    accentIconTheme: IconThemeData(
-        //icon themes that contrast accent color
-        ),
-    textSelectionTheme: TextSelectionThemeData(
-      cursorColor: Color(0xff936F3E),
-      selectionColor: Color(0xffB5BFD3),
-      selectionHandleColor: Color(0xff936F3E),
+    iconTheme: const IconThemeData(color: Colors.green),
+    primaryIconTheme: const IconThemeData(color: Colors.green),
+    accentIconTheme: IconThemeData(color: Colors.green),
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor: const Color(0xff936F3E),
+      selectionColor: const Color(0xffB5BFD3),
+      selectionHandleColor: const Color(0xff936F3E),
     ),
     tabBarTheme: TabBarTheme(
         // tab bat theme

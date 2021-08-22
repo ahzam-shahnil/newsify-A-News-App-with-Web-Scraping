@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newsify/controller/homeTabController.dart';
 
-import 'theme/dark_theme.dart';
 import 'config/country_config.dart';
 import 'controller/FavColorController.dart';
 import 'controller/NewsAPiController.dart';
 import 'controller/SearchApiController.dart';
 import 'controller/ThemeController.dart';
+import 'controller/homeTabController.dart';
+import 'theme/dark_theme.dart';
 import 'theme/light_theme.dart';
 import 'views/IntroView/WelcomeScreen.dart';
 import 'views/mainView/HomeScreen.dart';
@@ -34,7 +33,7 @@ class MyApp extends StatelessWidget {
   //? parameter var
   final String country;
   final int themeValue;
-  //? Controller that are used in the main app are lazy putted here
+  //? Controller that are used in the main app are lazy put here
   final searchController =
       Get.lazyPut(() => SearchApiController(), fenix: true);
   final favController = Get.lazyPut(() => FavColorController(), fenix: true);
@@ -43,6 +42,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      showPerformanceOverlay: true,
       debugShowCheckedModeBanner: false,
       title: 'Newsify',
       themeMode: themeValue == 0
