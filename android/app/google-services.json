@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "162549565918",
+    "project_id": "newsify-fa540",
+    "storage_bucket": "newsify-fa540.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162549565918:android:d7182439a2b0a41900b54f",
+        "android_client_info": {
+          "package_name": "com.proapps.newsify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "162549565918-svvs0q1iq95a3b9g6tp7p0knd30nv703.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrwHG211ZDuMlglusaZF_ckhJhFGpmf78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "162549565918-svvs0q1iq95a3b9g6tp7p0knd30nv703.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

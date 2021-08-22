@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="android.app" target="11" />
+      <module name="android.firebase_analytics" target="11" />
+      <module name="android.firebase_core" target="11" />
+      <module name="android.firebase_messaging" target="11" />
+      <module name="android.flutter_local_notifications" target="11" />
+      <module name="android.fluttertoast" target="11" />
+      <module name="android.package_info_plus" target="11" />
+      <module name="android.path_provider" target="11" />
+      <module name="android.search_choices" target="11" />
+      <module name="android.share_plus" target="11" />
+      <module name="android.shared_preferences" target="11" />
+      <module name="android.sqflite" target="11" />
+      <module name="android.url_launcher" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
