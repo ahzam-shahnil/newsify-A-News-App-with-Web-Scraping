@@ -10,9 +10,9 @@ class FavColorController extends GetxController {
   void changeValue({
     String? title,
     String? sourceName,
-    String? publishedAt,
+    String? idSearch,
   }) {
-    this.id.value = title! + sourceName! + publishedAt!;
+    this.id.value = idSearch ==null?( title! + sourceName!):idSearch;
     changeColor();
   }
 

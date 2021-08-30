@@ -3,6 +3,7 @@ dependencies:
   about: ^2.0.1
   animate_do: ^2.0.0
   cached_network_image: ^3.1.0
+  facebook_audience_network: ^1.0.0-nullsafety.0
   cupertino_icons: ^1.0.3
   date_format: ^2.0.3
   dio: ^4.0.0
@@ -10,12 +11,14 @@ dependencies:
   firebase_analytics: ^8.3.0
   firebase_core: ^1.5.0
   firebase_messaging: ^10.0.5
+  flutter_html: ^2.1.1
   flutter:
     sdk: flutter
   flutter_blurhash: ^0.6.0
   flutter_cache_manager: ^3.1.2
   flutter_local_notifications: ^8.1.1+1
   flutter_markdown: ^0.6.4
+  html: ^0.15.0
   flutter_staggered_animations: ^1.0.0
   flutter_svg: ^0.22.0
   fluttertoast: ^8.0.7
@@ -33,6 +36,7 @@ dependencies:
   sqflite: ^2.0.0+3
   url_launcher: ^6.0.9
   validators: ^3.0.0
+  webview_flutter: ^2.0.12
 description: A new Flutter project.
 dev_dependencies:
   flutter_launcher_icons: ^0.9.1

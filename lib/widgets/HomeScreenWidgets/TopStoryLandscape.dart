@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:newsify/model/top_story.dart';
+import 'package:newsify/views/mainView/DetailScreen.dart';
 
 import '../../controller/FavColorController.dart';
-import '../../model/article.dart';
-import '../../views/mainView/DetailScreen.dart';
 import '../Shared/AuthorDateRow.dart';
 import '../Shared/HeaderText.dart';
 import '../Shared/HeroImage.dart';
@@ -15,7 +15,7 @@ class TopStoryLandscape extends StatelessWidget {
     required this.selectedIndex,
   }) : super(key: key);
 
-  final Article article;
+  final TopStory article;
 
   final int selectedIndex;
 
@@ -24,16 +24,22 @@ class TopStoryLandscape extends StatelessWidget {
     return Column(
       children: [
         HeaderText(text: 'Breaking News'),
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
         GestureDetector(
           onTap: () {
             Get.find<FavColorController>().changeValue(
                 title: article.title,
-                publishedAt: article.publishedAt,
+              
                 sourceName: article.sourceName);
-            Get.to(() => DetailScreen(article: article, fromSearch: false));
+
+            Get.to(() => DetailScreen(
+                  sourceName: article.sourceName,
+                  fromSearch: false,
+                  title: article.title!,
+                  url: article.url,
+                ));
           },
           child: Flexible(
             child: Container(
@@ -72,7 +78,6 @@ class TopStoryLandscape extends StatelessWidget {
                             ),
                           ),
                           AuthorDateRow(
-                            author: article.author,
                             publishedAt: article.publishedAt,
                             sourceName: article.sourceName,
                           ),

@@ -1,37 +1,16 @@
 import 'package:get/get.dart';
+import 'package:newsify/controller/NewsAPiController.dart';
 import '../controller/ThemeController.dart';
-import '../controller/NewsAPiController.dart';
+// import '../controller/NewsAPiController.dart';
 
 //* Country Code
 const List<String> countryCodeList = [
-  'ae',
-  'ar',
-  'at',
-  'au',
-  'be',
-  'bg',
-  'br',
-  'ca',
-  'ch',
-  'cn',
-  'co',
-  'cu',
+  'pk',
 ];
 
 //* country list
 const List<String> countryList = [
-  'U.A.E',
-  'Argentina',
-  'Austria',
-  'Australia',
-  'Belgium',
-  'Bulgaria',
-  'Brazil',
-  'Canada',
-  'Switzerland',
-  'China',
-  'Colombia',
-  'Cuba',
+  'Pakistan',
 ];
 
 //* Language Map used for user selection

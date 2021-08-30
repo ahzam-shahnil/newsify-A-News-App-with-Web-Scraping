@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../config/constant.dart';
 
+
 class HomeTabController extends GetxController
     with SingleGetTickerProviderMixin {
   late TabController tabController;
@@ -12,8 +13,7 @@ class HomeTabController extends GetxController
   @override
   void onInit() {
     super.onInit();
-    tabController =
-        TabController(vsync: this, length: kNewsApiCategories.length);
+    tabController = TabController(vsync: this, length: kGeoNewsCategory.length);
   }
 
   @override

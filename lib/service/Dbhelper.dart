@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
+import 'package:newsify/model/top_story.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../controller/FavColorController.dart';
-import '../model/article.dart';
+
 import 'showToast.dart';
 
 class DbHelper {
   static final _databasename = "newsify.db";
   static final _databaseversion = 1;
-
+  final Logger log = Logger();
   // the table name
-  static final _articletable = "article_table";
+  static final _articleTable = "article_table";
 
   // column names for article_table
-  String _author = 'author';
-  String _desc = 'description';
+
   String _title = 'title';
   String _urlToImage = 'urlToImage';
   String _publishedAt = 'publishedAt';
@@ -35,33 +36,37 @@ class DbHelper {
           version: _databaseversion,
           onCreate: (Database db, int version) async {
         await db.execute(
-            'CREATE TABLE $_articletable($_id TEXT, $_author TEXT,$_desc TEXT, $_title TEXT, $_urlToImage TEXT, $_publishedAt  TEXT,$_url  TEXT, $_content TEXT,$_sourceName TEXT);');
+            'CREATE TABLE $_articleTable($_id TEXT, $_title TEXT, $_urlToImage TEXT, $_publishedAt  TEXT,$_url  TEXT, $_content TEXT,$_sourceName TEXT);');
       });
     }
   }
 
   // INSERT ARTICLES
-  Future<int> insertArticle(Article article) async {
+  Future<int> insertArticle({
+    required TopStory article,
+  }) async {
     int taskId = 0;
     await openDb();
 
-    bool isPresent = await checkSavedArticle(
-        id: "${article.title}" +
-            "${article.sourceName}" +
-            "${article.publishedAt}");
+    bool isPresent = article.id == null
+        ? await checkSavedArticle(
+            id: "${article.title}" + "${article.sourceName}")
+        : await checkSavedArticle(id: article.id);
+    log.i(isPresent);
     if (isPresent) {
-      await deleteArticle(
-          id: "${article.title}" +
-              "${article.sourceName}" +
-              "${article.publishedAt}");
+      article.id == null
+          ? await deleteArticle(
+              id: "${article.title}" + "${article.sourceName}")
+          : await deleteArticle(id: article.id);
       showToast(
-          msg: 'Removed from Saved Articles',
-          textColor: Colors.white,
-          backColor: Colors.blueGrey);
+        msg: 'Removed from Saved Articles',
+        textColor: Colors.white,
+        backColor: Colors.blueGrey,
+      );
     } else {
       await _database!
           .insert(
-        _articletable,
+        _articleTable,
         article.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace,
       )
@@ -74,23 +79,25 @@ class DbHelper {
           textColor: Colors.white,
           backColor: Colors.blueGrey);
     }
-    Get.find<FavColorController>().changeValue(
-        title: article.title,
-        publishedAt: article.publishedAt,
-        sourceName: article.sourceName);
+    article.id == null
+        ? Get.find<FavColorController>().changeValue(
+            title: article.title,
+            sourceName: article.sourceName,
+          )
+        : Get.find<FavColorController>().changeValue(
+            idSearch: article.id,
+          );
     return taskId;
   }
 
   // GET ARTICLES
-  Future<List<Article>> queryAll() async {
+  Future<List<TopStory>> queryAll() async {
     await openDb();
     List<Map<String, dynamic>> articleMap =
-        await _database!.query(_articletable);
+        await _database!.query(_articleTable);
     return List.generate(articleMap.length, (index) {
-      return Article(
+      return TopStory(
         title: articleMap[index]['title'],
-        description: articleMap[index]['desc'],
-        author: articleMap[index]['author'],
         publishedAt: articleMap[index]['publishedAt'],
         url: articleMap[index]['url'],
         urlToImage: articleMap[index]['urlToImage'],
@@ -101,15 +108,13 @@ class DbHelper {
   }
 
   // Search Articles
-  Future<List<Article>> queryOnly(String query) async {
+  Future<List<TopStory>> queryOnly(String query) async {
     await openDb();
     List<Map<String, dynamic>> articleMap = await _database!
-        .rawQuery("SELECT * FROM $_articletable WHERE $_title LIKE '$query%';");
+        .rawQuery("SELECT * FROM $_articleTable WHERE $_title LIKE '$query%';");
     return List.generate(articleMap.length, (index) {
-      return Article(
+      return TopStory(
         title: articleMap[index]['title'],
-        description: articleMap[index]['desc'],
-        author: articleMap[index]['author'],
         publishedAt: articleMap[index]['publishedAt'],
         url: articleMap[index]['url'],
         urlToImage: articleMap[index]['urlToImage'],
@@ -122,15 +127,17 @@ class DbHelper {
   // DELETE ARTICLES
   Future<void> deleteArticle({String? id}) async {
     await openDb();
-    await _database!.rawDelete('DELETE from $_articletable WHERE id=?;', [id!]);
+    await _database!
+        .rawDelete('DELETE from $_articleTable WHERE $_id=?;', [id!]);
   }
 
   Future<bool> checkSavedArticle({
     String? id,
   }) async {
     await openDb();
+    log.i(id);
     var x = await _database!
-        .rawQuery('SELECT COUNT (*) from $_articletable WHERE id=?;', [id!]);
+        .rawQuery('SELECT COUNT(*) from $_articleTable WHERE $_id=?;', [id!]);
     var count = Sqflite.firstIntValue(x);
     if (count != 0)
       return true;

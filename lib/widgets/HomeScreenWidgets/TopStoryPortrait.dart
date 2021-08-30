@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newsify/controller/FavColorController.dart';
+import 'package:newsify/model/top_story.dart';
 import 'package:newsify/views/mainView/DetailScreen.dart';
 
-import '../../model/article.dart';
 import '../Shared/AuthorDateRow.dart';
 import '../Shared/HeaderText.dart';
 import '../Shared/HeroImage.dart';
@@ -15,7 +15,7 @@ class TopStoryPortrait extends StatelessWidget {
     required this.selectedIndex,
   }) : super(key: key);
 
-  final Article article;
+  final TopStory article;
 
   final int selectedIndex;
 
@@ -34,10 +34,14 @@ class TopStoryPortrait extends StatelessWidget {
         GestureDetector(
           onTap: () {
             Get.find<FavColorController>().changeValue(
-                title: article.title,
-                publishedAt: article.publishedAt,
-                sourceName: article.sourceName);
-            Get.to(() => DetailScreen(article: article, fromSearch: false));
+                title: article.title, sourceName: article.sourceName);
+
+            Get.to(() => DetailScreen(
+                  sourceName: article.sourceName,
+                  fromSearch: false,
+                  title: article.title!,
+                  url: article.url,
+                ));
           },
           child: Center(
             child: Container(
@@ -54,7 +58,7 @@ class TopStoryPortrait extends StatelessWidget {
                     sourceName: article.sourceName!,
                     urlToImage: article.urlToImage,
                     selectedIndex: selectedIndex,
-                    height: Get.size.shortestSide * 0.44,
+                    height: Get.size.shortestSide * 0.46,
                     width: Get.size.shortestSide * 0.86,
                   ),
                   const SizedBox(
@@ -76,7 +80,6 @@ class TopStoryPortrait extends StatelessWidget {
                     height: 5,
                   ),
                   AuthorDateRow(
-                    author: article.author,
                     publishedAt: article.publishedAt,
                     sourceName: article.sourceName,
                   )

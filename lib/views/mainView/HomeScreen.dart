@@ -3,14 +3,16 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newsify/service/showToast.dart';
+import 'package:newsify/controller/DetailsController.dart';
+import 'package:newsify/service/NewsService.dart';
 
 import '../../config/constant.dart';
 import '../../controller/NewsAPiController.dart';
 import '../../controller/SettingController.dart';
 import '../../controller/homeTabController.dart';
-import '../../widgets/HomeScreenWidgets/HomeDrawer.dart';
+import '../../service/showToast.dart';
 import '../../widgets/HomeScreenWidgets/CircleTabIndicator.dart';
+import '../../widgets/HomeScreenWidgets/HomeDrawer.dart';
 import '../../widgets/HomeScreenWidgets/NewsTabView.dart';
 import '../../widgets/HomeScreenWidgets/TopStoryBar.dart';
 import 'SearchScreen.dart';
@@ -27,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final homeTabController = Get.find<HomeTabController>();
   final newsApiController = Get.find<NewsApiController>();
   final settingController = Get.lazyPut(() => SettingController(), fenix: true);
+  final detailController = Get.lazyPut(() => DetailsController(), fenix: true);
 
   @override
   void initState() {
@@ -42,11 +45,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   int exitCount = 0;
+  NewsService newsService = NewsService();
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: kNewsApiCategories.length,
+      length: kGeoNewsCategory.length,
       child: Scaffold(
         drawer: HomeDrawer(),
         body: WillPopScope(
@@ -82,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       splashColor: Colors.transparent,
                     ),
                     child: SliverAppBar(
-                      title: const Text('News'),
+                      title: const Text(kAppName),
                       centerTitle: MediaQuery.of(context).orientation ==
                               Orientation.portrait
                           ? true
@@ -91,8 +95,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       floating: true,
                       actions: [
                         IconButton(
-                            onPressed: () => Get.to(() => SearchScreen()),
-                            icon: const Icon(Icons.search_rounded))
+                          onPressed: () => Get.to(() => SearchScreen()),
+                          icon: const Icon(Icons.search_rounded),
+                        )
                       ],
                       expandedHeight: MediaQuery.of(context).orientation ==
                               Orientation.portrait
@@ -113,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           labelStyle: TextStyle(fontWeight: FontWeight.bold),
                           unselectedLabelColor: Colors.blueGrey,
                           controller: homeTabController.tabController,
-                          tabs: kNewsApiCategories
+                          tabs: kGeoNewsCategory
                               .map(
                                 (e) => Tab(
                                   text: e,
@@ -127,27 +132,30 @@ class _HomeScreenState extends State<HomeScreen> {
               body: TabBarView(
                 controller: homeTabController.tabController,
                 children: <Widget>[
-                  NewsTabView(
-                    articleList: newsApiController.articlesList[0],
-                  ),
-                  NewsTabView(
-                    articleList: newsApiController.articlesList[1],
-                  ),
-                  NewsTabView(
-                    articleList: newsApiController.articlesList[2],
-                  ),
-                  NewsTabView(
-                    articleList: newsApiController.articlesList[3],
-                  ),
-                  NewsTabView(
-                    articleList: newsApiController.articlesList[4],
-                  ),
-                  NewsTabView(
-                    articleList: newsApiController.articlesList[5],
-                  ),
-                  NewsTabView(
-                    articleList: newsApiController.articlesList[6],
-                  ),
+                  Obx(() => NewsTabView(
+                        articleList: newsApiController.articlesList[0],
+                      )),
+                  Obx(() => NewsTabView(
+                        articleList: newsApiController.articlesList[1],
+                      )),
+                  Obx(() => NewsTabView(
+                        articleList: newsApiController.articlesList[2],
+                      )),
+                  Obx(() => NewsTabView(
+                        articleList: newsApiController.articlesList[3],
+                      )),
+                  Obx(() => NewsTabView(
+                        articleList: newsApiController.articlesList[4],
+                      )),
+                  Obx(() => NewsTabView(
+                        articleList: newsApiController.articlesList[5],
+                      )),
+                  Obx(() => NewsTabView(
+                        articleList: newsApiController.articlesList[6],
+                      )),
+                  // Obx(() => NewsTabView(
+                  //       articleList: newsApiController.articlesList[7],
+                  //     )),
                 ],
               )),
         ),

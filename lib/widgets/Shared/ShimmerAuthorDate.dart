@@ -35,12 +35,14 @@ class ShimmerAuthorDate extends StatelessWidget {
               TextShimmer(
                 height: 35,
                 width: Get.size.shortestSide * 0.3,
+               
               )
             ],
           ),
           TextShimmer(
             height: 35,
             width: Get.size.shortestSide * 0.2,
+           
           ),
         ],
       ),

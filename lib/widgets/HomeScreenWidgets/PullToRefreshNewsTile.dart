@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:newsify/model/top_story.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../controller/NewsAPiController.dart';
-import '../../model/article.dart';
 import '../../service/SharedStorage.dart';
 import '../../service/showToast.dart';
 import '../Shared/NewsTile.dart';
@@ -16,7 +16,7 @@ class PullToRefreshNewsTile extends StatelessWidget {
     required this.isSearchTile,
   }) : super(key: key);
 
-  final List<Article> articleList;
+  final List<TopStory> articleList;
   final ScrollPhysics physics;
   final bool isSearchTile;
 
@@ -59,7 +59,7 @@ class PullToRefreshNewsTile extends StatelessWidget {
       controller: _refreshController,
       enablePullDown: true,
       enablePullUp: false,
-      header:const WaterDropHeader(),
+      header: const WaterDropHeader(),
       cacheExtent: 10,
       onRefresh: _onRefresh,
       child: NewsTile(

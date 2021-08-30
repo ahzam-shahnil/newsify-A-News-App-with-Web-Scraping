@@ -10,11 +10,16 @@ import '../service/showToast.dart';
 
 class SettingController extends GetxController {
   var cacheSize = '0 KB'.obs;
+  @override
+  void onInit() {
+    super.onInit();
+    getCacheSize();
+  }
 
   void getCacheSize() async {
     Directory tempDir = await getTemporaryDirectory();
     String dirPath = tempDir.path;
-    // int fileNum = 0;
+
     int totalSize = 0;
     var dir = Directory(dirPath);
     try {
@@ -23,16 +28,15 @@ class SettingController extends GetxController {
             .listSync(recursive: true, followLinks: false)
             .forEach((FileSystemEntity entity) {
           if (entity is File) {
-            // fileNum++;
             totalSize += entity.lengthSync();
           }
         });
       }
+      cacheSize.value = filesize(totalSize);
     } catch (e) {
       print(e.toString());
     }
-
-    cacheSize.value = filesize(totalSize);
+     cacheSize.value ='0 KB';
   }
 
   void clearCache() async {

@@ -65,7 +65,7 @@ class WelcomeScreen extends StatelessWidget {
         child: TextButton(
           child: const Text(
             'Let\s go right away!',
-            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
           ),
           onPressed: () => _onIntroEnd(context),
         ),
@@ -96,24 +96,25 @@ class WelcomeScreen extends StatelessWidget {
       //rtl: true, // Display as right-to-left
       skip: const Text('Skip'),
       next: const Icon(Icons.arrow_forward),
-      done: const Text('Start', style: TextStyle(fontWeight: FontWeight.w600)),
+      done: const Text('Start',
+          style: const TextStyle(fontWeight: FontWeight.w600)),
       curve: Curves.fastLinearToSlowEaseIn,
       controlsMargin: const EdgeInsets.all(16),
       controlsPadding: kIsWeb
           ? const EdgeInsets.all(12.0)
           : const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
       dotsDecorator: const DotsDecorator(
-        size: Size(10.0, 10.0),
-        color: Color(0xFFBDBDBD),
-        activeSize: Size(22.0, 10.0),
-        activeShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(25.0)),
+        size: const Size(10.0, 10.0),
+        color: const Color(0xFFBDBDBD),
+        activeSize: const Size(22.0, 10.0),
+        activeShape: const RoundedRectangleBorder(
+          borderRadius: const BorderRadius.all(Radius.circular(25.0)),
         ),
       ),
       dotsContainerDecorator: ShapeDecoration(
         color: Colors.grey.shade300,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        shape: const RoundedRectangleBorder(
+          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
         ),
       ),
     );

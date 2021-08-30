@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
 
-import '../config/environment_config.dart';
 import '../config/newsInterceptor.dart';
 import '../config/news_exceptions.dart';
 
-const BASE_URL = "https://newsapi.org/";
+const BASE_URL = "https://free-news.p.rapidapi.com/v1/search?";
 
 class NewsService {
   NewsService() {
@@ -12,7 +11,6 @@ class NewsService {
   }
   late Dio _dio;
 
-  EnvironmentConfig environmentConfig = EnvironmentConfig();
 
   Future<Response> getArticles(String path) async {
     Response response;
@@ -21,21 +19,18 @@ class NewsService {
         path,
       );
     } on DioError catch (e) {
-      // if (e.response != null) {
-      //   log.e(
-      //       'Status : ${e.response?.statusCode} \n Data : ${e.response?.data} \n Headers : ${e.response?.headers}');
-      // } else {
-      //   log.e('Error Sending Request \n ${e.message}');
-      // }
       throw NewsExceptions.fromDioError(e);
     }
     return response;
   }
 
-  void init() {
+  void init() async {
     var options = BaseOptions(
       baseUrl: BASE_URL,
-      headers: {"Authorization": "${environmentConfig.newsApiKey}"},
+      headers: {
+        'x-rapidapi-host': 'free-news.p.rapidapi.com',
+        'x-rapidapi-key': '4a09c9017amshcf90589190998f0p181ba8jsn6860582463b5'
+      },
       connectTimeout: 5000,
       receiveTimeout: 3000,
     );

@@ -14,7 +14,7 @@ class ShimmerTopStoryLandscape extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        TextShimmer(width: Get.size.longestSide * 0.21, height: 28),
+        TextShimmer(width: Get.size.longestSide * 0.21, height: 28,),
         const SizedBox(
           height: 5,
         ),
@@ -41,7 +41,7 @@ class ShimmerTopStoryLandscape extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TextShimmer(width: Get.size.longestSide * 0.6, height: 35),
+                  TextShimmer(width: Get.size.longestSide * 0.6, height: 35,),
                 const  SizedBox(
                     height: 8,
                   ),

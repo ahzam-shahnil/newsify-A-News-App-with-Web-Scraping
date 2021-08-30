@@ -1,8 +1,20 @@
 //? This method is used to check title of news for dashes and removes them
+import 'package:date_format/date_format.dart';
 import 'package:validators/validators.dart';
 
 String formatTitle({required String title}) => title.substring(
-    0, title.contains('-') ? title.lastIndexOf('-') : title.length - 1);
+    0, title.contains('-') ? title.lastIndexOf('-') : title.length);
+
+String formatPublishedAt({required String? publishedAt}) {
+  if (DateTime.tryParse(publishedAt!) != null) {
+    return formatDate(DateTime.tryParse(publishedAt)!, [d, '-', M, '-', yyyy]);
+  } else if (publishedAt.contains('Updated')) {
+    return publishedAt.replaceAll('Updated', '').toTitleCase();
+  }
+  {
+    return '';
+  }
+}
 
 //? this method does the formating of desctiption
 String formatDescription({String? desc}) => desc == null
@@ -27,45 +39,38 @@ String formatDescription({String? desc}) => desc == null
                     : desc.toTitleCase();
 
 //? to format contets
-String formatContent({String? content, String? description}) {
-  return content != null && description != null
-      ? description.toLowerCase().contains((content
+String formatContent({String? content}) {
+  return content != null
+      ? content.contains('caption')
+          ? content
               .substring(
-                0,
                 content.length ~/ 2,
+                content.indexOf('['),
               )
-              .toLowerCase()))
-          ? ""
-          : content.contains('caption')
+              .toTitleCase()
+          : content.contains('[')
               ? content
                   .substring(
-                    content.length ~/ 2,
+                    0,
                     content.indexOf('['),
                   )
                   .toTitleCase()
-              : content.contains('[')
-                  ? content
-                      .substring(
-                        0,
-                        content.indexOf('['),
-                      )
-                      .toTitleCase()
-                  : content.contains('<p>')
-                      ? content.replaceAll('<p>', '').replaceAll('</p>', '')
-                      : content.toTitleCase()
+              : content.contains('<p>')
+                  ? content.replaceAll('<p>', '').replaceAll('</p>', '')
+                  : content
       : 'No content available';
 }
 
-formatAuthor(String? author, String? sourceName) {
+formatAuthor({String? author, String? sourceName}) {
   return author == null
       ? isURL(sourceName!) && (sourceName.length > 12)
           ? "Unknown"
-          : sourceName.toUpperCase()
+          : sourceName.toTitleCase()
       : isURL(author) || (author.length > 7)
           ? isURL(sourceName!) && (sourceName.length > 12)
               ? "Unknown"
-              : sourceName.toUpperCase()
-          : author.toUpperCase();
+              : sourceName.toTitleCase()
+          : author.toTitleCase();
 }
 //? String Capital Method Here
 

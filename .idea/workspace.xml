@@ -11,119 +11,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1d0fc3a-2995-4d2c-a3d6-ca635c3ba752" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.8/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.8/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/configuration-cache/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/google-services.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-hdpi/splash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-mdpi/splash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-night-v21/background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-night-v21/launch_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-night/background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-night/launch_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-v21/background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-xhdpi/splash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-xxhdpi/splash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-xxxhdpi/splash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-hdpi/launcher_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-mdpi/launcher_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xhdpi/launcher_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxhdpi/launcher_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxxhdpi/launcher_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/settings_aar.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/icons/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flutter_native_splash.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/controller/TopStoryController.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/service/ApiRepositry.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/service/TopStoryService.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/service/local_notification_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/views/mainView/WebView.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable-v21/launch_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-v21/launch_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values-night/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/values-night/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/newsify_android.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/logo.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/config/constant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/config/constant.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/config/country_config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/config/country_config.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/config/environment_config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/config/environment_config.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/config/newsInterceptor.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/config/newsInterceptor.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/config/sortBy_fillter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/config/sortBy_fillter.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/controller/FavColorController.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controller/FavColorController.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/controller/NewsAPiController.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controller/NewsAPiController.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/controller/SearchApiController.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controller/SearchApiController.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/controller/ThemeController.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controller/ThemeController.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/controller/SettingController.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controller/SettingController.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/controller/homeTabController.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controller/homeTabController.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/functions/ArticleHelperFunctions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/functions/ArticleHelperFunctions.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/model/top_story.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/top_story.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/service/Dbhelper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/service/Dbhelper.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/service/NewsService.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/service/NewsService.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/service/SharedStorage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/service/SharedStorage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/service/news_service.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/theme/dark_theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theme/dark_theme.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/theme/light_theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theme/light_theme.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/IntroView/CountryScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/IntroView/CountryScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/IntroView/WelcomeScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/IntroView/WelcomeScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/mainView/DetailScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/mainView/DetailScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/mainView/DocsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/mainView/DocsScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/mainView/HomeScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/mainView/HomeScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/mainView/SavedArticleScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/mainView/SavedArticleScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/mainView/SearchScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/mainView/SearchScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/mainView/SettingScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/mainView/SettingScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/HomeDrawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/HomeDrawer.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/NewsTabView.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/NewsTabView.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/PullToRefreshNewsTile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/PullToRefreshNewsTile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/ShimmerNewsTabView.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/ShimmerNewsTabView.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/ShimmerTopStoryLandscape.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/ShimmerTopStoryLandscape.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/ShimmerTopStoryPortrait.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/ShimmerTopStoryPortrait.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/TopImageBlur.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/TopImageBlur.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/TopImageShimmer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/TopImageShimmer.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/TopStoryBar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/TopStoryBar.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/TopStoryLandscape.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/TopStoryLandscape.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/TopStoryPortrait.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/HomeScreenWidgets/TopStoryPortrait.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/Shared/AuthorDateRow.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Shared/AuthorDateRow.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/Shared/AuthorText.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Shared/AuthorText.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/Shared/BlurImage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Shared/BlurImage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/Shared/ClipRContainer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Shared/ClipRContainer.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/Shared/HeroImage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Shared/HeroImage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/Shared/CountryPicker.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Shared/CountryPicker.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/Shared/NewsTile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Shared/NewsTile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/Shared/ShimmerAuthorDate.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Shared/ShimmerAuthorDate.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/Shared/TextShimmer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Shared/TextShimmer.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsify.iml" beforeDir="false" afterPath="$PROJECT_DIR$/newsify.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/ThemeTile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/ThemeTile.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/widget_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

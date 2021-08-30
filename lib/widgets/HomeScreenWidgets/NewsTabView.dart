@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:newsify/model/top_story.dart';
 
-import '../../model/article.dart';
 import 'PullToRefreshNewsTile.dart';
 import 'ShimmerNewsTabView.dart';
 
@@ -11,18 +10,16 @@ class NewsTabView extends StatelessWidget {
     required this.articleList,
   }) : super(key: key);
 
-  final List<Article> articleList;
+  final List<TopStory> articleList;
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => articleList.isNotEmpty
-          ? PullToRefreshNewsTile(
-              articleList: articleList,
-              physics: NeverScrollableScrollPhysics(),
-              isSearchTile: false,
-            )
-          : ShimmerNewsTabView(),
-    );
+    return articleList.isNotEmpty
+        ? PullToRefreshNewsTile(
+            articleList: articleList,
+            physics: NeverScrollableScrollPhysics(),
+            isSearchTile: false,
+          )
+        : ShimmerNewsTabView();
   }
 }

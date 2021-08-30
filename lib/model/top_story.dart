@@ -1,57 +1,66 @@
-// import 'dart:convert';
+class TopStory {
+  final String? title;
+  final String? publishedAt;
+  final String? url;
+  final String? urlToImage;
+  final String? sourceName;
+  final String? content;
+  final String? id;
+  TopStory( {
+    String? sourceName,
+    required this.title,
+    required this.publishedAt,
+    required this.url,
+    required this.urlToImage,
+    String? content,
+    this.id,
+  })  : sourceName = sourceName ?? 'Web Desk',
+        content = content ?? '';
 
-// class TopStory {
-//   final List<String?> title;
-//   final List<String?> post;
-//   final List<String?> link;
-//   final List<String?> img;
+  TopStory copyWith({
+    String? title,
+    String? publishedAt,
+    String? url,
+    String? urlToImage,
+    String? content,
+  }) {
+    return TopStory(
+      title: title ?? this.title,
+      publishedAt: publishedAt ?? this.publishedAt,
+      url: url ?? this.url,
+      urlToImage: urlToImage ?? this.urlToImage,
+      content: content ?? this.content,
+    );
+  }
 
-//   TopStory({
-//     required this.title,
-//     required this.post,
-//     required this.link,
-//     required this.img,
-//   });
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'publishedAt': publishedAt,
+      'url': url,
+      'urlToImage': urlToImage,
+      "id": id?? title! + sourceName!,
+      'content': content,
+    };
+  }
 
-//   TopStory copyWith({
-//     List<String?>? title,
-//     List<String?>? post,
-//     List<String?>? link,
-//     List<String?>? img,
-//   }) {
-//     return TopStory(
-//       title: title ?? this.title,
-//       post: post ?? this.post,
-//       link: link ?? this.link,
-//       img: img ?? this.img,
-//     );
-//   }
+  factory TopStory.fromJson(Map<String, dynamic> map) {
+    return TopStory(
+      title: map['title'],
+      publishedAt: map['publishedAt'],
+      url: map['url'],
+      urlToImage: map['urlToImage'],
+      content: map['content'],
+    );
+  }
 
-//   Map<String, dynamic> toMap() {
-//     return {
-//       'title': title,
-//       'post': post,
-//       'link': link,
-//       'img': img,
-//     };
-//   }
+  // String toJson() => json.encode(toMap());
 
-//   factory TopStory.fromMap(Map<String, dynamic> map) {
-//     return TopStory(
-//       title: List<String?>.from(map['title']),
-//       post: List<String?>.from(map['post']),
-//       link: List<String?>.from(map['link']),
-//       img: List<String?>.from(map['img']),
-//     );
-//   }
+  // factory TopStory.fromJson(String source) =>
+  //     TopStory.fromMap(json.decode(source));
 
-//   String toJson() => json.encode(toMap());
-
-//   factory TopStory.fromJson(String source) =>
-//       TopStory.fromMap(json.decode(source));
-
-//   @override
-//   String toString() {
-//     return 'TopStory(title: $title, post: $post, link: $link, img: $img)';
-//   }
-// }
+  @override
+  String toString() {
+    return 'TopStory(title: $title, publishedAt: $publishedAt, url: $url, urlToImage: $urlToImage, content: $content)';
+  }
+}

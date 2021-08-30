@@ -29,7 +29,7 @@ class HeroImage extends StatelessWidget {
               height: height,
               width: width,
             )
-          : TopStoryImage(
+          : TopImageCover(
               urlToImg: urlToImage!,
               height: height,
               width: width,

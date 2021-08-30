@@ -17,7 +17,7 @@ class ThemeTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => ListTile(
-        contentPadding: EdgeInsets.symmetric(horizontal: 6),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 6),
         minLeadingWidth: 20,
         onTap: () => themeController.handleRadioValueChange(value),
         leading: Radio(

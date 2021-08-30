@@ -4,6 +4,7 @@ class SharedStorage {
   static String selectedCountry = '';
   static String lastRefresh = 'time';
   static String themeValue = '0';
+  // static String apiKey = '';
 
   //? To Save selected Country to shared prefs
   //SAVING DATA TO SHARED PREFERENCE
@@ -17,6 +18,18 @@ class SharedStorage {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     return preferences.getString(selectedCountry);
   }
+
+  // //SAVING DATA TO SHARED PREFERENCE
+  // static Future<bool> saveApiKey(String apiKey) async {
+  //   SharedPreferences preferences = await SharedPreferences.getInstance();
+  //   return await preferences.setString(apiKey, apiKey);
+  // }
+
+  // //? To get selected Country from shared prefs
+  // static Future<String?> getCurrentApiKey() async {
+  //   SharedPreferences preferences = await SharedPreferences.getInstance();
+  //   return preferences.getString(apiKey);
+  // }
 
   //? To Save last Refresh Time to shared prefs
   //SAVING DATA TO SHARED PREFERENCE

@@ -29,7 +29,7 @@ class CountryPicker extends StatelessWidget {
       displayClearIcon: false,
       padding: 10,
       searchInputDecoration: InputDecoration(
-        icon: Icon(
+        icon: const Icon(
           Icons.search,
           color: Colors.green,
           size: 24,
@@ -64,9 +64,9 @@ class CountryPicker extends StatelessWidget {
           padding: MediaQuery.of(dropDownContext).viewInsets,
           duration: const Duration(milliseconds: 300),
           child: Card(
-            margin: EdgeInsets.symmetric(vertical: 30, horizontal: 40),
+            margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 40),
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: 35, horizontal: 45),
+              padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 45),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,

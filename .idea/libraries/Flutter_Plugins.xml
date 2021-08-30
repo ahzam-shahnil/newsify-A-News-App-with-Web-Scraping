@@ -23,6 +23,11 @@
       <root url="file://C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-1.5.0" />
       <root url="file://C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/share_plus_macos-2.0.2" />
       <root url="file://C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_windows-2.0.2" />
+      <root url="file://C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications-8.1.1+1" />
+      <root url="file://C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-10.0.5" />
+      <root url="file://C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging_web-2.0.4" />
+      <root url="file://C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/facebook_audience_network-1.0.0-nullsafety.0" />
+      <root url="file://C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-2.0.12" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

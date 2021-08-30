@@ -1,13 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_blurhash/flutter_blurhash.dart';
-import 'package:get/get.dart';
+import 'package:newsify/model/top_story.dart';
+import 'package:newsify/widgets/NewsGrid.dart';
 
-import '../../controller/FavColorController.dart';
-import '../../functions/ArticleHelperFunctions.dart';
-import '../../model/article.dart';
 import '../../service/Dbhelper.dart';
-import 'DetailScreen.dart';
 
 class SavedArticleScreen extends StatefulWidget {
   @override
@@ -71,7 +66,7 @@ class _SavedArticleScreenState extends State<SavedArticleScreen> {
                         controller: _searchController,
                         decoration: InputDecoration(
                           hintText: 'Search',
-                          hintStyle: TextStyle(fontSize: 16),
+                          hintStyle: const TextStyle(fontSize: 16),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide.none,
@@ -90,7 +85,7 @@ class _SavedArticleScreenState extends State<SavedArticleScreen> {
               ),
         actions: [
           IconButton(
-            icon: Icon(Icons.search_outlined),
+            icon: const Icon(Icons.search_outlined),
             onPressed: () => setState(() {
               isFocused = true;
             }),
@@ -118,93 +113,8 @@ class _SavedArticleScreenState extends State<SavedArticleScreen> {
                 : _dbHelper.queryOnly(_searchController.text.trim()),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
-                List<Article> article = snapshot.data;
-                return GridView.count(
-                    crossAxisCount:
-                        Get.size.width > Get.size.shortestSide ? 4 : 2,
-                    shrinkWrap: true,
-                    mainAxisSpacing: 15,
-                    crossAxisSpacing: 15,
-                    // childAspectRatio: ,
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    children: List.generate(
-                        article.length,
-                        (index) => GestureDetector(
-                              onTap: () {
-                                Get.find<FavColorController>().changeValue(
-                                  title: article[index].title,
-                                  publishedAt: article[index].publishedAt,
-                                  sourceName: article[index].sourceName,
-                                );
-                                Get.to(DetailScreen(
-                                    article: article[index],
-                                    fromSearch: false));
-                              },
-                              child: Card(
-                                semanticContainer: true,
-                                clipBehavior: Clip.hardEdge,
-                                child: Column(
-                                  children: [
-                                    Hero(
-                                      tag:
-                                          '${article[index].title}${article[index].sourceName}',
-                                      child: article[index].urlToImage == null
-                                          ? Container(
-                                              width:
-                                                  Get.size.shortestSide * 0.42,
-                                              height:
-                                                  Get.size.shortestSide * 0.25,
-                                              child: const BlurHash(
-                                                  hash:
-                                                      "L5H2EC=PM+yV0g-mq.wG9c010J}I"),
-                                            )
-                                          : CachedNetworkImage(
-                                              imageUrl:
-                                                  article[index].urlToImage!,
-                                              placeholder: (context, url) =>
-                                                  Container(
-                                                padding:
-                                                    const EdgeInsets.all(10),
-                                                child:
-                                                    const CircularProgressIndicator(),
-                                              ),
-                                              errorWidget:
-                                                  (context, url, error) =>
-                                                      Container(
-                                                width: Get.size.shortestSide *
-                                                    0.42,
-                                                height: Get.size.shortestSide *
-                                                    0.25,
-                                                child: const BlurHash(
-                                                    hash:
-                                                        "L5H2EC=PM+yV0g-mq.wG9c010J}I"),
-                                              ),
-                                            ),
-                                    ),
-                                    Flexible(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          formatTitle(
-                                              title: article[index].title!),
-                                          style:
-                                              Get.textTheme.headline6!.copyWith(
-                                            fontWeight: FontWeight.w500,
-                                            // color: Colors.green,
-
-                                            fontSize:
-                                                Get.size.shortestSide * 0.035,
-                                          ),
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 4,
-                                          softWrap: true,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )));
+                List<TopStory> article = snapshot.data;
+                return NewsGrid(article: article);
               } else {
                 return const Center(
                   child: const CircularProgressIndicator(),
