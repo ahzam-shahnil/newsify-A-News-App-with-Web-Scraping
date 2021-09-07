@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 
 import 'config/country_config.dart';
 import 'controller/FavColorController.dart';
@@ -59,8 +58,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Logger log = Logger();
-
   final searchController =
       Get.lazyPut(() => SearchApiController(), fenix: true);
 
@@ -86,7 +83,6 @@ class _MyAppState extends State<MyApp> {
         if (routeFromMessage != null && widget.country.isNotEmpty) {
           Get.to(() => WebViewScreen(
                 url: routeFromMessage,
-                title: message.notification!.title!,
               ));
         }
       }
@@ -95,7 +91,6 @@ class _MyAppState extends State<MyApp> {
     ///forground work
     FirebaseMessaging.onMessage.listen((message) {
       if (widget.country.isNotEmpty && message.notification != null) {
-        LocalNotificationService.title = message.notification!.title!;
         LocalNotificationService.display(message);
       }
     });
@@ -107,7 +102,6 @@ class _MyAppState extends State<MyApp> {
       if (routeFromMessage != null && widget.country.isNotEmpty) {
         Get.to(() => WebViewScreen(
               url: routeFromMessage,
-              title: message.notification!.title!,
             ));
       }
     });
@@ -116,7 +110,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-
     setupInteractedMessage();
   }
 

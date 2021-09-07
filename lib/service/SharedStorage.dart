@@ -31,18 +31,18 @@ class SharedStorage {
   //   return preferences.getString(apiKey);
   // }
 
-  //? To Save last Refresh Time to shared prefs
-  //SAVING DATA TO SHARED PREFERENCE
-  static Future<bool> saveLastRefresh(DateTime minutes) async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    return await preferences.setString(lastRefresh, minutes.toString());
-  }
+  // //? To Save last Refresh Time to shared prefs
+  // //SAVING DATA TO SHARED PREFERENCE
+  // static Future<bool> saveLastRefresh(DateTime minutes) async {
+  //   SharedPreferences preferences = await SharedPreferences.getInstance();
+  //   return await preferences.setString(lastRefresh, minutes.toString());
+  // }
 
-  //? To get last Refresh Time from shared prefs
-  static Future<String?> getLastRefresh() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    return preferences.getString(lastRefresh);
-  }
+  // //? To get last Refresh Time from shared prefs
+  // static Future<String?> getLastRefresh() async {
+  //   SharedPreferences preferences = await SharedPreferences.getInstance();
+  //   return preferences.getString(lastRefresh);
+  // }
 
   //? To Save Selected theme to shared prefs
   //SAVING DATA TO SHARED PREFERENCE

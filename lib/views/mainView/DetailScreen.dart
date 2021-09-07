@@ -127,41 +127,29 @@ class DetailScreen extends StatelessWidget {
                 ? Align(
                     alignment: Alignment.topCenter,
                     child: imgUrl == null
-                        ? Hero(
-                            tag: id!,
-                            child: TopImageBlur(
-                              height: Get.size.shortestSide * 0.5,
-                              width: Get.size.shortestSide,
-                            ),
-                          )
-                        : Hero(
-                            tag: id!,
-                            child: TopImageCover(
-                              height: Get.size.shortestSide * 0.5,
-                              width: Get.size.shortestSide,
-                              urlToImg: imgUrl!,
-                            ),
-                          ),
+                        ? TopImageBlur(
+                          height: Get.size.shortestSide * 0.5,
+                          width: Get.size.shortestSide,
+                        )
+                        : TopImageCover(
+                          height: Get.size.shortestSide * 0.5,
+                          width: Get.size.shortestSide,
+                          urlToImg: imgUrl!,
+                        ),
                   )
                 : Obx(
                     () => Align(
                       alignment: Alignment.topCenter,
                       child: detailsController.imgUrl.value.isEmpty
-                          ? Hero(
-                              tag: '$title$sourceName$fromSearch',
-                              child: TopImageBlur(
-                                height: Get.size.shortestSide * 0.5,
-                                width: Get.size.shortestSide,
-                              ),
-                            )
-                          : Hero(
-                              tag: '$title$sourceName$fromSearch',
-                              child: TopImageCover(
-                                height: Get.size.shortestSide * 0.5,
-                                width: Get.size.shortestSide,
-                                urlToImg: detailsController.imgUrl.value,
-                              ),
-                            ),
+                          ? TopImageBlur(
+                            height: Get.size.shortestSide * 0.5,
+                            width: Get.size.shortestSide,
+                          )
+                          : TopImageCover(
+                            height: Get.size.shortestSide * 0.5,
+                            width: Get.size.shortestSide,
+                            urlToImg: detailsController.imgUrl.value,
+                          ),
                     ),
                   ),
             const SizedBox(

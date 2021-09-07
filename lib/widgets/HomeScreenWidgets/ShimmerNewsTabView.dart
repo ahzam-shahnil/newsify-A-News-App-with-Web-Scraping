@@ -8,7 +8,7 @@ class ShimmerNewsTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-        itemCount: 12,
+        itemCount: 8,
         separatorBuilder: (BuildContext context, int index) => const Divider(),
         itemBuilder: (BuildContext context, int index) => Shimmer.fromColors(
               child: ListTile(

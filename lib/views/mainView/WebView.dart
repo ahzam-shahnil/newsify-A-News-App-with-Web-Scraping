@@ -7,10 +7,9 @@ class WebViewScreen extends StatefulWidget {
   const WebViewScreen({
     Key? key,
     required this.url,
-    required this.title,
   }) : super(key: key);
   final String url;
-  final String? title;
+  // final String? title;
   _WebViewScreenState createState() => _WebViewScreenState();
 }
 
@@ -23,17 +22,13 @@ class _WebViewScreenState extends State<WebViewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
-
     return Scaffold(
         appBar: AppBar(
-          title: Text(widget.title ?? 'Newsify'),
+          title: Text('Newsify'),
         ),
-        body: Column(children: [
-          Expanded(
-              child: WebView(
-                  initialUrl: widget.url,
-                  javascriptMode: JavascriptMode.unrestricted))
-        ]));
+        body: WebView(
+          initialUrl: widget.url,
+          javascriptMode: JavascriptMode.unrestricted,
+        ));
   }
 }

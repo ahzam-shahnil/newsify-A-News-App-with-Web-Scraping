@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import '../views/mainView/WebView.dart';
 
 class LocalNotificationService {
-  static String title = '';
+
 
   static final FlutterLocalNotificationsPlugin _notificationsPlugin =
       FlutterLocalNotificationsPlugin();
@@ -21,7 +21,7 @@ class LocalNotificationService {
       if (route != null) {
         Get.to(() => WebViewScreen(
               url: route,
-              title: title,
+           
             ));
       }
     });

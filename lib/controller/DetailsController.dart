@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as parser;
-import 'package:logger/logger.dart';
+
 
 import 'package:http/http.dart' as http;
 import 'package:newsify/config/app_exceptions.dart';
@@ -17,7 +17,7 @@ class DetailsController extends GetxController {
   var isLoading = true.obs;
   
 
-  Logger logger = Logger();
+
 
   Future<void> getData({required String path}) async {
     showLoading();
@@ -27,7 +27,7 @@ class DetailsController extends GetxController {
       // Future.delayed(Duration(seconds: 3));
     } catch (e) {
       //? IT IS ADDED TEMPORARILY
-      logger.e(e);
+     
       showToast(
         msg: '$e. Check your Internet.',
         backColor: Colors.red,
@@ -99,7 +99,7 @@ class DetailsController extends GetxController {
       imgUrl.value = urlToImage!;
       pageContent.value = content!;
     } catch (e) {
-      logger.e(e);
+     
       throw e;
     }
   }

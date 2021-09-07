@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../config/constant.dart';
 
-
 class HomeTabController extends GetxController
     with SingleGetTickerProviderMixin {
   late TabController tabController;
@@ -19,6 +18,7 @@ class HomeTabController extends GetxController
   @override
   void onClose() {
     tabController.dispose();
+
     super.onClose();
   }
 }

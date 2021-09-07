@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as parser;
 import 'package:http/http.dart' as http;
-import 'package:logger/logger.dart';
 
 import '../config/app_exceptions.dart';
 import '../config/constant.dart';
@@ -37,7 +36,7 @@ class NewsApiController extends GetxController {
   var isRefreshSuccess = 0.obs;
   var lastRefresh = 0.0.obs;
   List<String?> link = List<String>.empty();
-  Logger logger = Logger();
+
   List<String?> publishedAt = List<String>.empty();
   List<String?> title = List<String>.empty();
 
@@ -55,6 +54,7 @@ class NewsApiController extends GetxController {
       SharedStorage.saveSelectedCountry(country.value);
     }
     if (toLoad) {
+      //? loading the first general Category of news app
       loadAllNews();
     }
   }
@@ -72,11 +72,11 @@ class NewsApiController extends GetxController {
       try {
         articlesList[i] = (await getArticle(path: kGeoPath[i]));
         isRefreshSuccess.value++;
-        SharedStorage.saveLastRefresh(DateTime.now());
+        // SharedStorage.saveLastRefresh(DateTime.now());
         Future.delayed(Duration(seconds: 3));
       } catch (e) {
         //? IT IS ADDED TEMPORARILY
-        logger.e(e);
+
         showToast(
           msg: '$e. Check your Internet.',
           backColor: Colors.red,

@@ -20,6 +20,7 @@ class TopStoryBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlexibleSpaceBar(
+      
       background: SafeArea(child: Obx(() {
         final int selectedIndex = Get.find<HomeTabController>().getIndex;
 

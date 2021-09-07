@@ -22,18 +22,15 @@ class HeroImage extends StatelessWidget {
   final String? urlToImage;
   @override
   Widget build(BuildContext context) {
-    return Hero(
-      tag: '$title$sourceName' + 'false',
-      child: urlToImage == null
-          ? TopImageBlur(
-              height: height,
-              width: width,
-            )
-          : TopImageCover(
-              urlToImg: urlToImage!,
-              height: height,
-              width: width,
-            ),
-    );
+    return urlToImage == null
+        ? TopImageBlur(
+            height: height,
+            width: width,
+          )
+        : TopImageCover(
+            urlToImg: urlToImage!,
+            height: height,
+            width: width,
+          );
   }
 }

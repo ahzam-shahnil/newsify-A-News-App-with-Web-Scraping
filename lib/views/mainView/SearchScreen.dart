@@ -178,28 +178,25 @@ class _SearchScreenState extends State<SearchScreen> {
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
           ),
-          leading: Hero(
-            tag: searchController.articleList[index].id!,
-            child: searchController.articleList[index].media == null
-                ? ClipRContainer(
-                    width: Get.size.shortestSide * 0.25,
-                    height: Get.size.shortestSide * 0.17,
-                    child: const BlurHash(hash: "L5H2EC=PM+yV0g-mq.wG9c010J}I"),
-                  )
-                : Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    clipBehavior: Clip.hardEdge,
-                    child: ProgressiveImage(
-                      fit: BoxFit.fill,
-                      width: Get.size.shortestSide * 0.25,
-                      image: searchController.articleList[index].media!,
-                      height: Get.size.shortestSide * 0.17,
-                      imageError: 'assets/images/place_holder.jpg',
-                    ),
+          leading: searchController.articleList[index].media == null
+              ? ClipRContainer(
+                  width: Get.size.shortestSide * 0.25,
+                  height: Get.size.shortestSide * 0.17,
+                  child: const BlurHash(hash: "L5H2EC=PM+yV0g-mq.wG9c010J}I"),
+                )
+              : Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
                   ),
-          ),
+                  clipBehavior: Clip.hardEdge,
+                  child: ProgressiveImage(
+                    fit: BoxFit.fill,
+                    width: Get.size.shortestSide * 0.25,
+                    image: searchController.articleList[index].media!,
+                    height: Get.size.shortestSide * 0.17,
+                    imageError: 'assets/images/place_holder.jpg',
+                  ),
+                ),
           subtitle: AuthorDateRow(
             publishedAt: searchController.articleList[index].publishedDate,
             sourceName: searchController.articleList[index].author,

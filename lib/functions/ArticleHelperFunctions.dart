@@ -8,12 +8,10 @@ String formatTitle({required String title}) => title.substring(
 String formatPublishedAt({required String? publishedAt}) {
   if (DateTime.tryParse(publishedAt!) != null) {
     return formatDate(DateTime.tryParse(publishedAt)!, [d, '-', M, '-', yyyy]);
-  } else if (publishedAt.contains('Updated')) {
+  } else 
     return publishedAt.replaceAll('Updated', '').toTitleCase();
-  }
-  {
-    return '';
-  }
+  
+  
 }
 
 //? this method does the formating of desctiption

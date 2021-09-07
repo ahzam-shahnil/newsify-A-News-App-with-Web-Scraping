@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
+
 import 'package:newsify/model/top_story.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -12,7 +12,7 @@ import 'showToast.dart';
 class DbHelper {
   static final _databasename = "newsify.db";
   static final _databaseversion = 1;
-  final Logger log = Logger();
+
   // the table name
   static final _articleTable = "article_table";
 
@@ -52,7 +52,7 @@ class DbHelper {
         ? await checkSavedArticle(
             id: "${article.title}" + "${article.sourceName}")
         : await checkSavedArticle(id: article.id);
-    log.i(isPresent);
+
     if (isPresent) {
       article.id == null
           ? await deleteArticle(
@@ -135,7 +135,7 @@ class DbHelper {
     String? id,
   }) async {
     await openDb();
-    log.i(id);
+
     var x = await _database!
         .rawQuery('SELECT COUNT(*) from $_articleTable WHERE $_id=?;', [id!]);
     var count = Sqflite.firstIntValue(x);

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
+
 import '../model/SearchArticle.dart';
 
 import '../service/NewsService.dart';
@@ -8,7 +8,7 @@ class SearchApiController extends GetxController {
   NewsService service = NewsService();
   var language = 'en'.obs;
   var searchQuery = ''.obs;
-  final Logger log = Logger();
+
 
   set setSearchQuery(var searchQuery) => this.searchQuery.value = searchQuery;
   // var isLoading = false.obs;
@@ -34,7 +34,7 @@ class SearchApiController extends GetxController {
       final results = List<Map<String, dynamic>>.from(
         response.data['articles'],
       );
-      log.i(results);
+   
       final List<SearchArticle> articles = List<SearchArticle>.from(
               results.map((x) => SearchArticle.fromJson(x)))
           .toList(growable: false);

@@ -3,15 +3,14 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newsify/controller/DetailsController.dart';
-import 'package:newsify/service/NewsService.dart';
 
 import '../../config/constant.dart';
+import '../../controller/DetailsController.dart';
 import '../../controller/NewsAPiController.dart';
 import '../../controller/SettingController.dart';
 import '../../controller/homeTabController.dart';
+import '../../service/NewsService.dart';
 import '../../service/showToast.dart';
-import '../../widgets/HomeScreenWidgets/CircleTabIndicator.dart';
 import '../../widgets/HomeScreenWidgets/HomeDrawer.dart';
 import '../../widgets/HomeScreenWidgets/NewsTabView.dart';
 import '../../widgets/HomeScreenWidgets/TopStoryBar.dart';
@@ -24,24 +23,27 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>
+    with AutomaticKeepAliveClientMixin {
   //* Controllers
   final homeTabController = Get.find<HomeTabController>();
   final newsApiController = Get.find<NewsApiController>();
   final settingController = Get.lazyPut(() => SettingController(), fenix: true);
   final detailController = Get.lazyPut(() => DetailsController(), fenix: true);
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
+    super.initState();
     // ignore: unnecessary_statements
     kAllOrientation;
     newsApiController.loadAllNews();
     // Create TabController for getting the index of current tab
     homeTabController.tabController.addListener(() {
       homeTabController.setIndex = homeTabController.tabController.index;
+      // newsApiController.loadAllNews(index: homeTabController.index.value);
     });
-
-    super.initState();
   }
 
   int exitCount = 0;
@@ -49,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return DefaultTabController(
       length: kGeoNewsCategory.length,
       child: Scaffold(
@@ -109,13 +112,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       bottom: TabBar(
                           automaticIndicatorColorAdjustment: true,
                           isScrollable: true,
-                          indicator: CircleTabIndicator(
-                              color: Colors.blue,
-                              radius: 3,
-                              isPortrait: MediaQuery.of(context).orientation ==
-                                  Orientation.portrait),
+                          // indicator: CircleTabIndicator(
+                          //     color: Colors.blue,
+                          //     radius: 3,
+                          //     isPortrait: MediaQuery.of(context).orientation ==
+                          //         Orientation.portrait),
                           labelColor: Colors.blue,
-                          labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                          labelStyle:
+                              const TextStyle(fontWeight: FontWeight.bold),
                           unselectedLabelColor: Colors.blueGrey,
                           controller: homeTabController.tabController,
                           tabs: kGeoNewsCategory

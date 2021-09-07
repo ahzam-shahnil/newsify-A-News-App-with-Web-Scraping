@@ -19,29 +19,33 @@ class NewsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.count(
-        crossAxisCount: Get.size.width > Get.size.shortestSide ? 4 : 2,
+        crossAxisCount:
+            Get.mediaQuery.orientation == Orientation.landscape ? 4 : 2,
         shrinkWrap: true,
         mainAxisSpacing: 15,
         crossAxisSpacing: 15,
-        // childAspectRatio: ,
+        childAspectRatio: Get.mediaQuery.orientation == Orientation.portrait
+            ? (2 / 2.75)
+            : 1 / 1.5,
         padding: const EdgeInsets.symmetric(horizontal: 15),
         children: List.generate(
             article.length,
             (index) => GestureDetector(
                   onTap: () {
                     Get.find<FavColorController>().changeValue(
+                      idSearch: article[index].id,
+                      sourceName: article[index].sourceName,
                       title: article[index].title,
-                      sourceName: article[index].sourceName,
                     );
-
-                    Get.to(DetailScreen(
-                      fromSearch: false,
-                      sourceName: article[index].sourceName,
-                      title: article[index].title!,
-                      url: article[index].url,
-                      imgUrl: article[index].urlToImage,
-                      pageContent: article[index].content,
-                    ));
+                    Get.to(() => DetailScreen(
+                          fromSearch: article[index].id == null,
+                          sourceName: article[index].sourceName,
+                          title: article[index].title!,
+                          url: article[index].url,
+                          imgUrl: article[index].urlToImage,
+                          pageContent: article[index].content,
+                          id: article[index].id,
+                        ));
                   },
                   child: Card(
                     semanticContainer: true,
@@ -49,8 +53,7 @@ class NewsGrid extends StatelessWidget {
                     child: Column(
                       children: [
                         Hero(
-                          tag:
-                              '${article[index].title}${article[index].sourceName}',
+                          tag: '${article[index].id}',
                           child: article[index].urlToImage == null
                               ? Container(
                                   width: Get.size.shortestSide * 0.42,
