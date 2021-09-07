@@ -75,8 +75,7 @@ class NewsApiController extends GetxController {
         // SharedStorage.saveLastRefresh(DateTime.now());
         Future.delayed(Duration(seconds: 3));
       } catch (e) {
-        //? IT IS ADDED TEMPORARILY
-
+        //? in the next update remove this toast
         showToast(
           msg: '$e. Check your Internet.',
           backColor: Colors.red,
