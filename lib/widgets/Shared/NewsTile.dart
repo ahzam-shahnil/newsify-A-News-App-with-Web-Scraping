@@ -16,13 +16,11 @@ class NewsTile extends StatelessWidget {
     required this.article,
     required this.physics,
     required this.isSearchTile,
-    // required this.toEnableHero,
   }) : super(key: key);
 
   final List<TopStory> article;
   final ScrollPhysics physics;
   final bool isSearchTile;
-  // final bool toEnableHero;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +30,7 @@ class NewsTile extends StatelessWidget {
       shrinkWrap: true,
       itemCount: article.length,
       physics: physics,
-      
+
       separatorBuilder: (BuildContext context, int index) => index != 0
           ? index % 4 == 0
               ? Column(
@@ -112,6 +110,9 @@ class NewsTile extends StatelessWidget {
                             width: Get.size.shortestSide * 0.25,
                             image: article[index].urlToImage!,
                             height: Get.size.shortestSide * 0.17,
+
+                            //TODO: in the next update change this place holder
+                            //TODO: and also remove toast from webscraping service
                             imageError: 'assets/images/place_holder.jpg',
                           ),
                         ),
