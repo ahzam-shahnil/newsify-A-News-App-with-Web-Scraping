@@ -19,8 +19,8 @@ class NewsTile extends StatelessWidget {
   }) : super(key: key);
 
   final List<TopStory> article;
-  final ScrollPhysics physics;
   final bool isSearchTile;
+  final ScrollPhysics physics;
 
   @override
   Widget build(BuildContext context) {

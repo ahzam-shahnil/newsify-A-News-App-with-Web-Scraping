@@ -4,28 +4,11 @@ import 'package:flutter/material.dart';
 ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     visualDensity: const VisualDensity(vertical: 0.5, horizontal: 0.5),
-    primarySwatch: const MaterialColor(
-      0xFFF5E0C3,
-      <int, Color>{
-        50: const Color(0x1a5D4524),
-        100: const Color(0xa15D4524),
-        200: const Color(0xaa5D4524),
-        300: const Color(0xaf5D4524),
-        400: const Color(0x1a483112),
-        500: const Color(0xa1483112),
-        600: const Color(0xaa483112),
-        700: const Color(0xff483112),
-        800: const Color(0xaf2F1E06),
-        900: const Color(0xff2F1E06)
-      },
-    ),
     primaryColor: const Color(0xff12161B),
     primaryColorBrightness: Brightness.dark,
     primaryColorLight: const Color(0x1a311F06),
     primaryColorDark: const Color(0xff12161B),
     canvasColor: const Color(0xff12161B),
-    accentColor: const Color(0xff457BE0),
-    accentColorBrightness: Brightness.dark,
     scaffoldBackgroundColor: const Color(0xff12161B),
     bottomAppBarColor: const Color(0xff12161B),
     cardColor: const Color(0xff181E25),
@@ -45,7 +28,6 @@ ThemeData darkTheme = ThemeData(
     toggleButtonsTheme: ToggleButtonsThemeData(
 //toggle button theme
         ),
-    buttonColor: const Color(0xffB5BFD3),
     secondaryHeaderColor: const Color(0xff12161B),
     backgroundColor: const Color(0xff457BE0),
     dialogBackgroundColor: const Color(0xff181E25),
@@ -55,9 +37,6 @@ ThemeData darkTheme = ThemeData(
     toggleableActiveColor: const Color(0xff6D42CE),
     textTheme: TextTheme(),
     primaryTextTheme: const TextTheme(headline4: TextStyle(color: Colors.blue)),
-    accentTextTheme: TextTheme(
-//text theme that contrast with accent Color
-        ),
     buttonTheme: ButtonThemeData(),
     inputDecorationTheme: InputDecorationTheme(
 // default values for InputDecorator, TextField, and TextFormField
@@ -66,7 +45,6 @@ ThemeData darkTheme = ThemeData(
       color: Colors.green,
     ),
     primaryIconTheme: const IconThemeData(color: Colors.green),
-    accentIconTheme: IconThemeData(),
     sliderTheme: SliderThemeData(
         // slider themes
         ),
@@ -101,7 +79,21 @@ ThemeData darkTheme = ThemeData(
         ),
     bottomSheetTheme: BottomSheetThemeData(
         //bottom sheet theme
-        ),
+        ), colorScheme: ColorScheme.fromSwatch(primarySwatch: const MaterialColor(
+      0xFFF5E0C3,
+      <int, Color>{
+        50: const Color(0x1a5D4524),
+        100: const Color(0xa15D4524),
+        200: const Color(0xaa5D4524),
+        300: const Color(0xaf5D4524),
+        400: const Color(0x1a483112),
+        500: const Color(0xa1483112),
+        600: const Color(0xaa483112),
+        700: const Color(0xff483112),
+        800: const Color(0xaf2F1E06),
+        900: const Color(0xff2F1E06)
+      },
+    )).copyWith(secondary: const Color(0xff457BE0)),
     popupMenuTheme: PopupMenuThemeData(
         //pop menu theme
         ),
