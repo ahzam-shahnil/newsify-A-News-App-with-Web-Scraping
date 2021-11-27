@@ -1,3 +1,4 @@
+
 # Welcome to [Newsify](https://play.google.com/store/apps/details?id=com.proapps.newsify)!
 **Stay up to date**  
   
@@ -24,3 +25,8 @@
 ![enter image description here](https://play-lh.googleusercontent.com/IuKQJlsmFnk3mrNHEYsczD47Ntz_6j4g8r-_hGuiX6xurDG13qoH50SDkVkVHHetR6s=w720-h310-rw)
 ![enter image description here](https://play-lh.googleusercontent.com/Rgo-Xhb4OM-l7rUXZYrbanU7bUlRFaNKWTcOoaaBYs0do3bVyT-lcM8a0Zzjj6S6tMG4=w720-h310-rw)
 
+**
+
+**If you like this app, please star ⭐this repository and fork the repo to download code**
+
+**
