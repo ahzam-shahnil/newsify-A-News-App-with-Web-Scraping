@@ -22,6 +22,7 @@ dependencies:
   fluttertoast: ^8.0.7
   get: ^4.2.4
   html: ^0.15.0
+  import_sorter: ^4.6.0
   introduction_screen: ^2.1.0
   material_floating_search_bar: ^0.3.4
   package_info_plus: ^1.0.5
@@ -38,6 +39,7 @@ dependencies:
 description: A new Flutter project.
 dev_dependencies:
   flutter_launcher_icons: ^0.9.1
+  flutter_lints: ^1.0.4
   flutter_native_splash: ^1.2.1
   flutter_test:
     sdk: flutter

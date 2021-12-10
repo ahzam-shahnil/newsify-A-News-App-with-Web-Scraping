@@ -1,6 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:shimmer_image/shimmer_image.dart';
 
+// Project imports:
 import '../Shared/ClipRContainer.dart';
 
 class TopImageCover extends StatelessWidget {

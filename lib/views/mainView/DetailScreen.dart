@@ -1,21 +1,24 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
-import 'package:newsify/model/top_story.dart';
 import 'package:share_plus/share_plus.dart';
 
+// Project imports:
+import 'package:newsify/model/top_story.dart';
+import '../../controller/DetailsController.dart';
 import '../../controller/FavColorController.dart';
 import '../../functions/ArticleHelperFunctions.dart';
 import '../../functions/UrlFunction.dart';
-import '../../controller/DetailsController.dart';
-import '../../service/showToast.dart';
-import '../../widgets/Shared/TextShimmer.dart';
-
 import '../../service/Dbhelper.dart';
-import '../../widgets/Shared/AuthorText.dart';
-import '../../widgets/Shared/ClipRContainer.dart';
+import '../../service/showToast.dart';
 import '../../widgets/HomeScreenWidgets/TopImageBlur.dart';
 import '../../widgets/HomeScreenWidgets/TopStoryImage.dart';
+import '../../widgets/Shared/AuthorText.dart';
+import '../../widgets/Shared/ClipRContainer.dart';
+import '../../widgets/Shared/TextShimmer.dart';
 
 class DetailScreen extends StatelessWidget {
   DetailScreen({
@@ -93,7 +96,8 @@ class DetailScreen extends StatelessWidget {
                     textColor: Colors.white);
               } else {
                 final box = context.findRenderObject() as RenderBox?;
-                await Share.share('''
+                await Share.share(
+                    '''
           *${formatTitle(title: title).trim()}*\n 
           
           ${formatContent(content: detailsController.pageContent.value)} \n 
@@ -128,28 +132,28 @@ class DetailScreen extends StatelessWidget {
                     alignment: Alignment.topCenter,
                     child: imgUrl == null
                         ? TopImageBlur(
-                          height: Get.size.shortestSide * 0.5,
-                          width: Get.size.shortestSide,
-                        )
+                            height: Get.size.shortestSide * 0.5,
+                            width: Get.size.shortestSide,
+                          )
                         : TopImageCover(
-                          height: Get.size.shortestSide * 0.5,
-                          width: Get.size.shortestSide,
-                          urlToImg: imgUrl!,
-                        ),
+                            height: Get.size.shortestSide * 0.5,
+                            width: Get.size.shortestSide,
+                            urlToImg: imgUrl!,
+                          ),
                   )
                 : Obx(
                     () => Align(
                       alignment: Alignment.topCenter,
                       child: detailsController.imgUrl.value.isEmpty
                           ? TopImageBlur(
-                            height: Get.size.shortestSide * 0.5,
-                            width: Get.size.shortestSide,
-                          )
+                              height: Get.size.shortestSide * 0.5,
+                              width: Get.size.shortestSide,
+                            )
                           : TopImageCover(
-                            height: Get.size.shortestSide * 0.5,
-                            width: Get.size.shortestSide,
-                            urlToImg: detailsController.imgUrl.value,
-                          ),
+                              height: Get.size.shortestSide * 0.5,
+                              width: Get.size.shortestSide,
+                              urlToImg: detailsController.imgUrl.value,
+                            ),
                     ),
                   ),
             const SizedBox(
@@ -194,15 +198,49 @@ class DetailScreen extends StatelessWidget {
             ),
             //? Using diiferent screens for different approach
             fromSearch
-                ? Text(
-                    formatContent(
-                      content: pageContent,
-                    ),
-                    style: Get.textTheme.headline4!.copyWith(
-                      fontWeight: FontWeight.w600,
-                      fontSize: Get.size.shortestSide * 0.045,
-                    ),
-                  )
+                ? isAllHtmlTags(pageContent!)
+                    ? Html(data: pageContent, shrinkWrap: true, style: {
+                        // tables will have the below background color
+                        "table": Style(
+                          backgroundColor:
+                              Color.fromARGB(0x50, 0xee, 0xee, 0xee),
+                        ),
+                        // some other granular customizations are also possible
+                        "tr": Style(
+                          border:
+                              Border(bottom: BorderSide(color: Colors.grey)),
+                        ),
+                        "th": Style(
+                          // padding: EdgeInsets.all(4),
+                          backgroundColor: Colors.grey,
+                        ),
+                        "td": Style(
+                          // padding: EdgeInsets.all(4),
+                          alignment: Alignment.topLeft,
+                        ),
+                        // text that renders h1 elements will be red
+                        "h1": Style(color: Colors.green),
+                        //TODO : Implement Customization here for text size and other things
+                        "body": Style(
+                            fontSize: FontSize.larger,
+                            lineHeight: LineHeight.normal,
+                            fontWeight: FontWeight.normal,
+                            whiteSpace: WhiteSpace.PRE,
+                            padding: EdgeInsets.zero),
+                        "p": Style(
+                          fontSize: FontSize.larger,
+                          fontWeight: FontWeight.w500,
+                        )
+                      })
+                    : Text(
+                        formatContent(
+                          content: pageContent,
+                        ),
+                        style: Get.textTheme.headline4!.copyWith(
+                          fontWeight: FontWeight.w600,
+                          fontSize: Get.size.shortestSide * 0.045,
+                        ),
+                      )
                 :
                 //? used when we go to detail screen from home screen
                 Obx(() => detailsController.isLoading.value

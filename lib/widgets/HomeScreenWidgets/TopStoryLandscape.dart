@@ -1,8 +1,12 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:get/get.dart';
+
+// Project imports:
 import 'package:newsify/model/top_story.dart';
 import 'package:newsify/views/mainView/DetailScreen.dart';
-
 import '../../controller/FavColorController.dart';
 import '../Shared/AuthorDateRow.dart';
 import '../Shared/HeaderText.dart';

@@ -1,18 +1,23 @@
+// Dart imports:
 import 'dart:async';
 import 'dart:io';
 
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:get/get.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as parser;
 import 'package:http/http.dart' as http;
 
+// Project imports:
 import '../config/app_exceptions.dart';
 import '../config/constant.dart';
 import '../config/country_config.dart';
 import '../model/top_story.dart';
 import '../service/SharedStorage.dart';
-import '../service/showToast.dart';
+// import '../service/showToast.dart';
 
 class NewsApiController extends GetxController {
   var articlesList = <List<TopStory>>[
@@ -76,11 +81,11 @@ class NewsApiController extends GetxController {
         Future.delayed(Duration(seconds: 3));
       } catch (e) {
         //? in the next update remove this toast
-        showToast(
-          msg: '$e. Check your Internet.',
-          backColor: Colors.red,
-          textColor: Colors.white,
-        );
+        // showToast(
+        //   msg: 'Check your Internet.',
+        //   backColor: Colors.red,
+        //   textColor: Colors.white,
+        // );
       }
     }
     hideLoading();
@@ -121,6 +126,14 @@ class NewsApiController extends GetxController {
 
     final imgElement = document.getElementsByClassName('pic');
 
+    if (urlPath.value.contains('latest-news')) {
+    } else if (urlPath.value.contains('category/business')) {
+    } else if (urlPath.value.contains('category/sports')) {
+    } else if (urlPath.value.contains('category/entertainment')) {
+    } else if (urlPath.value.contains('category/health')) {
+    } else if (urlPath.value.contains('category/sci-tech')) {
+    } else if (urlPath.value.contains('category/world')) {}
+
     title = imgElement
         .map((element) =>
             element.getElementsByTagName('img')[0].attributes['title'])
@@ -138,6 +151,7 @@ class NewsApiController extends GetxController {
             .getElementsByTagName('a')[0]
             .attributes['href'])
         .toList();
+
     if (urlPath.value.contains('news')) {
       img = imgElement
           .map((element) =>

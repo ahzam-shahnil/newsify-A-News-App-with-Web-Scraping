@@ -1,13 +1,17 @@
+// Dart imports:
 import 'dart:async';
 import 'dart:io';
 
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:get/get.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as parser;
-
-
 import 'package:http/http.dart' as http;
+
+// Project imports:
 import 'package:newsify/config/app_exceptions.dart';
 import 'package:newsify/service/showToast.dart';
 

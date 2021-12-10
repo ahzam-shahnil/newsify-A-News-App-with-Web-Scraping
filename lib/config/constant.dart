@@ -1,5 +1,5 @@
+// Flutter imports:
 import 'package:flutter/services.dart';
-
 
 const kPlayStoreLink =
     'https://play.google.com/store/apps/details?id=com.proapps.newsify';

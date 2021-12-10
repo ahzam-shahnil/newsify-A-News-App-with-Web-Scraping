@@ -1,12 +1,14 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import 'package:newsify/model/top_story.dart';
+// Package imports:
+import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
+// Project imports:
+import 'package:newsify/model/top_story.dart';
 import '../controller/FavColorController.dart';
-
 import 'showToast.dart';
 
 class DbHelper {

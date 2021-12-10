@@ -1,11 +1,15 @@
-import 'package:about/about.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+// Package imports:
+import 'package:about/about.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:share_plus/share_plus.dart';
 
+// Project imports:
 import '../../config/constant.dart';
 import '../../config/country_config.dart';
 import '../../controller/NewsAPiController.dart';

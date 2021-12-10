@@ -1,8 +1,12 @@
-import 'package:cached_network_image/cached_network_image.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:get/get.dart';
 
+// Project imports:
 import '../controller/FavColorController.dart';
 import '../functions/ArticleHelperFunctions.dart';
 import '../model/top_story.dart';
@@ -38,7 +42,8 @@ class NewsGrid extends StatelessWidget {
                       title: article[index].title,
                     );
                     Get.to(() => DetailScreen(
-                          fromSearch: article[index].id == null,
+                          //TODO: solve saved article issue here . Some saved content is html . Do a check for html
+                          fromSearch: article[index].id==null,
                           sourceName: article[index].sourceName,
                           title: article[index].title!,
                           url: article[index].url,

@@ -1,8 +1,14 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:get/get.dart';
+
+// Project imports:
 import '../service/SharedStorage.dart';
 
 class ThemeController extends GetxController {
+  
   //? 2 reprents Auto Switch Theme setting
   var themeValue = 2.obs;
   @override

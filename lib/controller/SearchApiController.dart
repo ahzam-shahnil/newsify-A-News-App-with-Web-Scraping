@@ -1,7 +1,8 @@
+// Package imports:
 import 'package:get/get.dart';
 
+// Project imports:
 import '../model/SearchArticle.dart';
-
 import '../service/NewsService.dart';
 
 class SearchApiController extends GetxController {

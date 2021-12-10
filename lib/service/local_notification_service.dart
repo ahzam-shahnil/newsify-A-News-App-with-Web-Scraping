@@ -1,8 +1,12 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
+
+// Package imports:
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 
+// Project imports:
 import '../views/mainView/WebView.dart';
 
 class LocalNotificationService {

@@ -1,8 +1,12 @@
-import 'package:animate_do/animate_do.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:newsify/controller/NewsAPiController.dart';
 
+// Package imports:
+import 'package:animate_do/animate_do.dart';
+import 'package:get/get.dart';
+
+// Project imports:
+import 'package:newsify/controller/NewsAPiController.dart';
 import '../../controller/homeTabController.dart';
 import 'ShimmerTopStoryLandscape.dart';
 import 'ShimmerTopStoryPortrait.dart';
@@ -20,7 +24,8 @@ class TopStoryBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlexibleSpaceBar(
-      
+      collapseMode: CollapseMode.parallax,
+      stretchModes: [],
       background: SafeArea(child: Obx(() {
         final int selectedIndex = Get.find<HomeTabController>().getIndex;
 

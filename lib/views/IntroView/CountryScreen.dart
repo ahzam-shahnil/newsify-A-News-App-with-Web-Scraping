@@ -1,8 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+
+// Package imports:
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
+// Project imports:
 import '../../config/constant.dart';
 import '../../controller/NewsAPiController.dart';
 import '../../service/showToast.dart';
@@ -66,11 +69,12 @@ class CountryScreen extends StatelessWidget {
                 ),
                 CircleAvatar(
                   radius: Get.size.width * 0.08,
-                  backgroundColor: Colors.blue.shade300,
+                  backgroundColor: Colors.green,
                   child: IconButton(
                       icon: Icon(
                         Icons.navigate_next,
                         size: Get.size.width * 0.07,
+                        color: Colors.white,
                       ),
                       onPressed: () async {
                         if (apiPathController.country.value.trim().isNotEmpty) {
@@ -80,7 +84,7 @@ class CountryScreen extends StatelessWidget {
                         } else {
                           showToast(
                               msg: 'Choose a Country',
-                              backColor: Colors.blue.shade300,
+                              backColor: Colors.green,
                               textColor: Colors.white);
                         }
                       }),

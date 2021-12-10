@@ -1,7 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 
+// Project imports:
 import '../Shared/BlurImage.dart';
 import '../Shared/ClipRContainer.dart';
 

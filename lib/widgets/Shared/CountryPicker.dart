@@ -1,7 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
+// Package imports:
 import 'package:search_choices/search_choices.dart';
 
+// Project imports:
 import '../../config/country_config.dart';
 import '../../controller/NewsAPiController.dart';
 
@@ -34,20 +37,29 @@ class CountryPicker extends StatelessWidget {
           color: Colors.green,
           size: 24,
         ),
+        alignLabelWithHint: true,
       ),
       items: countryList.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(
             value,
+            style: Theme.of(context)
+                .textTheme
+                .headline6!
+                .copyWith(fontWeight: FontWeight.normal, color: Colors.green),
           ),
         );
       }).toList(),
       value: apiPathController.country.value.toUpperCase(),
+      style: Theme.of(context)
+          .textTheme
+          .headline6!
+          .copyWith(fontWeight: FontWeight.normal, color: Colors.green),
       hint: Text(
         hint,
-        style: Get.textTheme.headline6!
-            .copyWith(fontSize: 16, fontWeight: FontWeight.normal),
+        style: Theme.of(context).textTheme.headline6!.copyWith(
+            fontSize: 16, fontWeight: FontWeight.normal, color: Colors.green),
       ),
       keyboardType: TextInputType.name,
       onChanged: (value) =>

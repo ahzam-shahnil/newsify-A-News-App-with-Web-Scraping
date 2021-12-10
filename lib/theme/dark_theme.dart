@@ -1,3 +1,4 @@
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -79,7 +80,10 @@ ThemeData darkTheme = ThemeData(
         ),
     bottomSheetTheme: BottomSheetThemeData(
         //bottom sheet theme
-        ), colorScheme: ColorScheme.fromSwatch(primarySwatch: const MaterialColor(
+        ),
+    colorScheme: ColorScheme.fromSwatch(
+      brightness: Brightness.dark,
+        primarySwatch: const MaterialColor(
       0xFFF5E0C3,
       <int, Color>{
         50: const Color(0x1a5D4524),

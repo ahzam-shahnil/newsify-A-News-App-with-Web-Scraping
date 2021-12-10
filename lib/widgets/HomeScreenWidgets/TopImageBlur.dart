@@ -1,5 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Project imports:
 import '../Shared/BlurImage.dart';
 import '../Shared/ClipRContainer.dart';
 

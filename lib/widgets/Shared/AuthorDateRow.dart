@@ -1,7 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:newsify/functions/ArticleHelperFunctions.dart';
 
+// Package imports:
+import 'package:get/get.dart';
+
+// Project imports:
+import 'package:newsify/functions/ArticleHelperFunctions.dart';
 import 'AuthorText.dart';
 
 class AuthorDateRow extends StatelessWidget {

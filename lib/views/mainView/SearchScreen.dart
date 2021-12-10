@@ -1,12 +1,15 @@
-import 'package:facebook_audience_network/ad/ad_native.dart';
-import 'package:flutter/cupertino.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:facebook_audience_network/ad/ad_native.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:shimmer_image/shimmer_image.dart';
 
+// Project imports:
 import '../../config/language_fillter.dart';
 import '../../controller/FavColorController.dart';
 import '../../controller/SearchApiController.dart';

@@ -1,15 +1,15 @@
-import 'package:flutter/cupertino.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 ThemeData lightTheme = ThemeData(
-    brightness: Brightness.light,
+    // brightness: Brightness.light,
     visualDensity: const VisualDensity(vertical: 0.5, horizontal: 0.5),
     primaryColor: const Color(0xfffbfaff),
     primaryColorBrightness: Brightness.light,
     primaryColorLight: const Color(0xffb0b5b3),
     primaryColorDark: Colors.blue,
     canvasColor: const Color(0xfff0efeb),
-    scaffoldBackgroundColor: const Color(0xffe9ecef),
+    scaffoldBackgroundColor: const Color(0xFF030303),
     appBarTheme: AppBarTheme(backgroundColor: const Color(0xffe9ecef)),
     cardColor: Colors.grey.shade200,
     dividerColor: const Color(0xffced4da),
@@ -36,9 +36,7 @@ ThemeData lightTheme = ThemeData(
     hintColor: Colors.black,
     errorColor: Colors.red,
     toggleableActiveColor: const Color(0xff6D42CE),
-    textTheme: TextTheme(
-      
-        ),
+    textTheme: TextTheme(),
     primaryTextTheme: const TextTheme(headline4: TextStyle(color: Colors.blue)),
     inputDecorationTheme: InputDecorationTheme(
         // default values for InputDecorator, TextField, and TextFormField
@@ -81,21 +79,25 @@ ThemeData lightTheme = ThemeData(
         //bottom sheet theme
         ),
     popupMenuTheme: PopupMenuThemeData(),
-    bannerTheme: MaterialBannerThemeData(), colorScheme: ColorScheme.fromSwatch(primarySwatch: const MaterialColor(
-      0xFFFAF9FE,
-      <int, Color>{
-        50: const Color(0xffe1e0e5), //10%
-        100: const Color(0xffc8c7cb), //20%
-        200: const Color(0xffafaeb2), //30%
-        300: const Color(0xff969598), //40%
-        400: const Color(0xff7d7d7f), //50%
-        500: const Color(0xff646466), //60%
-        600: const Color(0xff4b4b4c), //70%
-        700: const Color(0xff323233), //80%
-        800: const Color(0xff191919), //90%
-        900: const Color(0xff000000), //
-      },
-    )).copyWith(secondary: const Color(0xff457BE0)),
+    bannerTheme: MaterialBannerThemeData(),
+    colorScheme: ColorScheme.fromSwatch(
+        brightness: Brightness.light,
+        cardColor: const Color(0xfff0efeb),
+        primarySwatch: const MaterialColor(
+          0xFFFAF9FE,
+          <int, Color>{
+            50: const Color(0xffe1e0e5), //10%
+            100: const Color(0xffc8c7cb), //20%
+            200: const Color(0xffafaeb2), //30%
+            300: const Color(0xff969598), //40%
+            400: const Color(0xff7d7d7f), //50%
+            500: const Color(0xff646466), //60%
+            600: const Color(0xff4b4b4c), //70%
+            700: const Color(0xff323233), //80%
+            800: const Color(0xff191919), //90%
+            900: const Color(0xff000000), //
+          },
+        )).copyWith(secondary: const Color(0xff457BE0)),
     dividerTheme: DividerThemeData(
         //divider, vertical divider theme
         ),

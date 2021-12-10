@@ -1,9 +1,13 @@
-import 'package:facebook_audience_network/facebook_audience_network.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:facebook_audience_network/facebook_audience_network.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:get/get.dart';
 import 'package:shimmer_image/shimmer_image.dart';
 
+// Project imports:
 import '../../controller/FavColorController.dart';
 import '../../model/top_story.dart';
 import '../../views/mainView/DetailScreen.dart';
@@ -112,7 +116,7 @@ class NewsTile extends StatelessWidget {
                             height: Get.size.shortestSide * 0.17,
 
                             //TODO: in the next update change this place holder
-                            //TODO: and also remove toast from webscraping service
+                            
                             imageError: 'assets/images/place_holder.jpg',
                           ),
                         ),

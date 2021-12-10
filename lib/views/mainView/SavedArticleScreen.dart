@@ -1,7 +1,9 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:newsify/model/top_story.dart';
 import 'package:newsify/widgets/NewsGrid.dart';
-
 import '../../service/Dbhelper.dart';
 
 class SavedArticleScreen extends StatefulWidget {

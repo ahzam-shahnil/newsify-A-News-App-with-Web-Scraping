@@ -1,9 +1,10 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:get/get.dart';
 
+// Project imports:
 import '../../config/constant.dart';
 import '../../controller/DetailsController.dart';
 import '../../controller/NewsAPiController.dart';
@@ -35,7 +36,6 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   void initState() {
-    super.initState();
     // ignore: unnecessary_statements
     kAllOrientation;
     newsApiController.loadAllNews();
@@ -44,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen>
       homeTabController.setIndex = homeTabController.tabController.index;
       // newsApiController.loadAllNews(index: homeTabController.index.value);
     });
+    super.initState();
   }
 
   int exitCount = 0;
@@ -62,9 +63,10 @@ class _HomeScreenState extends State<HomeScreen>
               return Future.value(true);
             } else {
               showToast(
-                  msg: 'Press again to exit',
-                  backColor: Colors.grey.shade400,
-                  textColor: Colors.black);
+                msg: 'Press again to exit',
+                backColor: Colors.grey.shade400,
+                textColor: Colors.black,
+              );
               setState(() {
                 exitCount++;
               });
@@ -80,6 +82,7 @@ class _HomeScreenState extends State<HomeScreen>
           },
           child: NestedScrollView(
               physics: const ClampingScrollPhysics(),
+              floatHeaderSlivers: true,
               headerSliverBuilder:
                   (BuildContext context, bool innerBoxIsScrolled) {
                 return <Widget>[
@@ -95,13 +98,14 @@ class _HomeScreenState extends State<HomeScreen>
                           ? true
                           : false,
                       pinned: true,
-                      floating: true,
+                      floating: false,
                       actions: [
                         IconButton(
                           onPressed: () => Get.to(() => SearchScreen()),
                           icon: const Icon(Icons.search_rounded),
                         )
                       ],
+                      // expandedHeight: _top ? _expandH : _collapseH,
                       expandedHeight: MediaQuery.of(context).orientation ==
                               Orientation.portrait
                           ? Get.size.longestSide * 0.58
@@ -109,26 +113,36 @@ class _HomeScreenState extends State<HomeScreen>
                       flexibleSpace: TopStoryBar(
                         newsApiController: newsApiController,
                       ),
-                      bottom: TabBar(
-                          automaticIndicatorColorAdjustment: true,
-                          isScrollable: true,
-                          // indicator: CircleTabIndicator(
-                          //     color: Colors.blue,
-                          //     radius: 3,
-                          //     isPortrait: MediaQuery.of(context).orientation ==
-                          //         Orientation.portrait),
-                          labelColor: Colors.blue,
-                          labelStyle:
-                              const TextStyle(fontWeight: FontWeight.bold),
-                          unselectedLabelColor: Colors.blueGrey,
-                          controller: homeTabController.tabController,
-                          tabs: kGeoNewsCategory
-                              .map(
-                                (e) => Tab(
-                                  text: e,
-                                ),
-                              )
-                              .toList()),
+
+                      bottom: PreferredSize(
+                        preferredSize:
+                            const Size(double.infinity, kToolbarHeight),
+                        child: Container(
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                          child: TabBar(
+                              indicatorColor: Theme.of(context).iconTheme.color,
+                              automaticIndicatorColorAdjustment: true,
+                              isScrollable: true,
+                              // indicator: CircleTabIndicator(
+                              //     color: Colors.blue,
+                              //     radius: 3,
+                              //     isPortrait: MediaQuery.of(context).orientation ==
+                              //         Orientation.portrait),
+                              //
+                              labelColor: Theme.of(context).iconTheme.color,
+                              labelStyle:
+                                  const TextStyle(fontWeight: FontWeight.bold),
+                              unselectedLabelColor: Colors.blueGrey,
+                              controller: homeTabController.tabController,
+                              tabs: kGeoNewsCategory
+                                  .map(
+                                    (e) => Tab(
+                                      text: e,
+                                    ),
+                                  )
+                                  .toList()),
+                        ),
+                      ),
                     ),
                   ),
                 ];

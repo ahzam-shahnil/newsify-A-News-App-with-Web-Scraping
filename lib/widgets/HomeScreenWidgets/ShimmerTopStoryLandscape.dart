@@ -1,10 +1,14 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 
+// Project imports:
 import '../Shared/BlurImage.dart';
-import '../Shared/TextShimmer.dart';
 import '../Shared/ShimmerAuthorDate.dart';
+import '../Shared/TextShimmer.dart';
 
 class ShimmerTopStoryLandscape extends StatelessWidget {
   const ShimmerTopStoryLandscape({Key? key}) : super(key: key);

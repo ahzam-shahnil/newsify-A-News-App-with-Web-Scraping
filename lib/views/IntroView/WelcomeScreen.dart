@@ -1,12 +1,15 @@
+// Flutter imports:
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
+// Project imports:
 import '../../config/constant.dart';
 import '../../controller/NewsAPiController.dart';
-
 import 'CountryScreen.dart';
 
 class WelcomeScreen extends StatelessWidget {

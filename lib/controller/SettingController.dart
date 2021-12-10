@@ -1,11 +1,16 @@
+// Dart imports:
 import 'dart:io';
 
-import 'package:filesize/filesize.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:filesize/filesize.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 
+// Project imports:
 import '../service/showToast.dart';
 
 class SettingController extends GetxController {

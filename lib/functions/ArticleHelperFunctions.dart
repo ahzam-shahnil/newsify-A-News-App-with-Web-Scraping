@@ -1,4 +1,6 @@
 //? This method is used to check title of news for dashes and removes them
+
+// Package imports:
 import 'package:date_format/date_format.dart';
 import 'package:validators/validators.dart';
 
@@ -8,10 +10,8 @@ String formatTitle({required String title}) => title.substring(
 String formatPublishedAt({required String? publishedAt}) {
   if (DateTime.tryParse(publishedAt!) != null) {
     return formatDate(DateTime.tryParse(publishedAt)!, [d, '-', M, '-', yyyy]);
-  } else 
+  } else
     return publishedAt.replaceAll('Updated', '').toTitleCase();
-  
-  
 }
 
 //? this method does the formating of desctiption
@@ -57,6 +57,18 @@ String formatContent({String? content}) {
                   ? content.replaceAll('<p>', '').replaceAll('</p>', '')
                   : content
       : 'No content available';
+}
+
+bool isAllHtmlTags(String htmlText) {
+  RegExp exp = RegExp(r"<[^>]*>", multiLine: true, caseSensitive: true);
+
+  return exp.hasMatch(htmlText);
+}
+
+String removeAllHtmlTags(String htmlText) {
+  RegExp exp = RegExp(r"<[^>]*>", multiLine: true, caseSensitive: true);
+
+  return htmlText.replaceAll(exp, '');
 }
 
 formatAuthor({String? author, String? sourceName}) {

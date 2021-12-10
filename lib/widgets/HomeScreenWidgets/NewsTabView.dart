@@ -1,9 +1,12 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:newsify/model/top_story.dart';
 import 'package:newsify/widgets/Shared/NewsTile.dart';
+import 'ShimmerNewsTabView.dart';
 
 // import 'PullToRefreshNewsTile.dart';
-import 'ShimmerNewsTabView.dart';
 
 class NewsTabView extends StatelessWidget {
   const NewsTabView({
