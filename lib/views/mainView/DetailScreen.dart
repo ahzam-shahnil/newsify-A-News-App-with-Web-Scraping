@@ -203,12 +203,12 @@ class DetailScreen extends StatelessWidget {
                         // tables will have the below background color
                         "table": Style(
                           backgroundColor:
-                              Color.fromARGB(0x50, 0xee, 0xee, 0xee),
+                              const Color.fromARGB(0x50, 0xee, 0xee, 0xee),
                         ),
                         // some other granular customizations are also possible
                         "tr": Style(
                           border:
-                              Border(bottom: BorderSide(color: Colors.grey)),
+                              const Border(bottom: BorderSide(color: Colors.grey)),
                         ),
                         "th": Style(
                           // padding: EdgeInsets.all(4),
@@ -249,68 +249,68 @@ class DetailScreen extends StatelessWidget {
                     Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
+                        children: const [
                           TextShimmer(
                             height: 15,
                             width: double.infinity,
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 6,
                           ),
                           TextShimmer(
                             height: 15,
                             width: double.infinity,
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 6,
                           ),
                           TextShimmer(
                             height: 15,
                             width: double.infinity,
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 6,
                           ),
                           TextShimmer(
                             height: 15,
                             width: double.infinity,
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 6,
                           ),
                           TextShimmer(
                             height: 15,
                             width: double.infinity,
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 6,
                           ),
                           TextShimmer(
                             height: 15,
                             width: double.infinity,
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 6,
                           ),
                           TextShimmer(
                             height: 15,
                             width: double.infinity,
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 6,
                           ),
                           TextShimmer(
                             height: 15,
                             width: double.infinity,
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 6,
                           ),
                           TextShimmer(
                             height: 15,
                             width: double.infinity,
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 6,
                           ),
                         ],
@@ -322,11 +322,11 @@ class DetailScreen extends StatelessWidget {
                             // tables will have the below background color
                             "table": Style(
                               backgroundColor:
-                                  Color.fromARGB(0x50, 0xee, 0xee, 0xee),
+                                  const Color.fromARGB(0x50, 0xee, 0xee, 0xee),
                             ),
                             // some other granular customizations are also possible
                             "tr": Style(
-                              border: Border(
+                              border: const Border(
                                   bottom: BorderSide(color: Colors.grey)),
                             ),
                             "th": Style(

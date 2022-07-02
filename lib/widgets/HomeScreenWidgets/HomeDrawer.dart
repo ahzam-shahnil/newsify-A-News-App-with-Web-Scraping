@@ -12,7 +12,7 @@ import '../../views/mainView/SavedArticleScreen.dart';
 import '../../views/mainView/SettingScreen.dart';
 
 class HomeDrawer extends StatelessWidget {
-  HomeDrawer({
+  const HomeDrawer({
     Key? key,
   }) : super(key: key);
 
@@ -34,7 +34,7 @@ class HomeDrawer extends StatelessWidget {
               horizontalTitleGap: 8,
               focusColor: Colors.grey,
               title: const Text('Saved Articles'),
-              onTap: () => Get.to(() =>  SavedArticleScreen())),
+              onTap: () => Get.to(() => SavedArticleScreen())),
           ListTile(
               leading: const Icon(Icons.settings),
               horizontalTitleGap: 8,

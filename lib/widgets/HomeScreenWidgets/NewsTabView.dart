@@ -21,9 +21,9 @@ class NewsTabView extends StatelessWidget {
     return articleList.isNotEmpty
         ? NewsTile(
             article: articleList,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             isSearchTile: false,
           )
-        : ShimmerNewsTabView();
+        : const ShimmerNewsTabView();
   }
 }

@@ -70,7 +70,7 @@ class NewsTile extends StatelessWidget {
                   ],
                 )
               : const Divider()
-          : Container(
+          : const SizedBox(
               height: 0,
               width: 0,
             ),
@@ -90,7 +90,7 @@ class NewsTile extends StatelessWidget {
                       ));
                 },
                 title: Text(
-                  '${article[index].title!}',
+                  article[index].title!,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -116,7 +116,7 @@ class NewsTile extends StatelessWidget {
                             height: Get.size.shortestSide * 0.17,
 
                             //TODO: in the next update change this place holder
-                            
+
                             imageError: 'assets/images/place_holder.jpg',
                           ),
                         ),
@@ -126,7 +126,7 @@ class NewsTile extends StatelessWidget {
                   sourceName: article[index].sourceName,
                 ),
               )
-            : Container(
+            : const SizedBox(
                 height: 0,
                 width: 0,
               );

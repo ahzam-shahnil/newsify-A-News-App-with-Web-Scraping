@@ -10,11 +10,10 @@ class SearchApiController extends GetxController {
   var language = 'en'.obs;
   var searchQuery = ''.obs;
 
-
   set setSearchQuery(var searchQuery) => this.searchQuery.value = searchQuery;
   // var isLoading = false.obs;
   var articleList = <SearchArticle>[].obs;
-  get getLanguage => this.language.value;
+  get getLanguage => language.value;
 
   set setLanguage(language) => this.language.value = language;
   // void toggleLoading() => isLoading.toggle();
@@ -35,15 +34,15 @@ class SearchApiController extends GetxController {
       final results = List<Map<String, dynamic>>.from(
         response.data['articles'],
       );
-   
+
       final List<SearchArticle> articles = List<SearchArticle>.from(
               results.map((x) => SearchArticle.fromJson(x)))
           .toList(growable: false);
       return articles;
-    } on Exception catch (e) {
+    } on Exception {
       // log.d("In get news  Article " + e.toString());
 
-      throw e;
+      rethrow;
     }
   }
 }

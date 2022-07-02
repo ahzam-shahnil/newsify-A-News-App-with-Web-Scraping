@@ -47,16 +47,17 @@ class _HomeScreenState extends State<HomeScreen>
     super.initState();
   }
 
+  //* Counter for back key pressed
   int exitCount = 0;
-  NewsService newsService = NewsService();
 
+  NewsService newsService = NewsService();
   @override
   Widget build(BuildContext context) {
     super.build(context);
     return DefaultTabController(
       length: kGeoNewsCategory.length,
       child: Scaffold(
-        drawer: HomeDrawer(),
+        drawer: const HomeDrawer(),
         body: WillPopScope(
           onWillPop: () {
             if (exitCount >= 1) {
@@ -70,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen>
               setState(() {
                 exitCount++;
               });
-              Future.delayed(Duration(seconds: 3), () {
+              Future.delayed(const Duration(seconds: 3), () {
                 if (exitCount == 1) {
                   setState(() {
                     exitCount = 0;

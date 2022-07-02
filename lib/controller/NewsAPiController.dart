@@ -78,7 +78,7 @@ class NewsApiController extends GetxController {
         articlesList[i] = (await getArticle(path: kGeoPath[i]));
         isRefreshSuccess.value++;
         // SharedStorage.saveLastRefresh(DateTime.now());
-        Future.delayed(Duration(seconds: 3));
+        Future.delayed(const Duration(seconds: 3));
       } catch (e) {
         //? in the next update remove this toast
         // showToast(
@@ -97,7 +97,7 @@ class NewsApiController extends GetxController {
           .get(Uri.parse(
             'https://www.geo.tv/$path',
           ))
-          .timeout(Duration(seconds: 15));
+          .timeout(const Duration(seconds: 15));
 
       urlPath.value = path;
       return parseArticle(response.body);
@@ -110,7 +110,7 @@ class NewsApiController extends GetxController {
         'API not responded in time',
       );
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
