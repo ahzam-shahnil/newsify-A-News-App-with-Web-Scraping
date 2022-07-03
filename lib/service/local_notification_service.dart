@@ -1,8 +1,7 @@
 // Flutter imports:
-import 'package:flutter/cupertino.dart';
-
 // Package imports:
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 
@@ -10,13 +9,11 @@ import 'package:get/get.dart';
 import '../views/mainView/WebView.dart';
 
 class LocalNotificationService {
-
-
   static final FlutterLocalNotificationsPlugin _notificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
   static void initialize(BuildContext context) {
-    final InitializationSettings initializationSettings =
+    const InitializationSettings initializationSettings =
         InitializationSettings(
             android: AndroidInitializationSettings("@mipmap/launcher_icon"));
 
@@ -25,7 +22,6 @@ class LocalNotificationService {
       if (route != null) {
         Get.to(() => WebViewScreen(
               url: route,
-           
             ));
       }
     });
@@ -35,11 +31,11 @@ class LocalNotificationService {
     try {
       final id = DateTime.now().millisecondsSinceEpoch ~/ 1000;
 
-      final NotificationDetails notificationDetails = NotificationDetails(
+      const NotificationDetails notificationDetails = NotificationDetails(
           android: AndroidNotificationDetails(
         "Newsify",
         "newsify channel",
-        "Get Latest News",
+        subText: "Get Latest News",
         importance: Importance.max,
         priority: Priority.high,
       ));

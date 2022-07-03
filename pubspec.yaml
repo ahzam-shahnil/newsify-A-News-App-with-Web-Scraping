@@ -6,45 +6,45 @@ dependencies:
   cupertino_icons: ^1.0.3
   date_format: ^2.0.3
   dio: ^4.0.0
-  facebook_audience_network: ^1.0.0-nullsafety.0
+  facebook_audience_network: ^1.0.1
   filesize: ^2.0.1
-  firebase_analytics: ^8.3.0
+  firebase_analytics: ^9.1.12
   firebase_core: ^1.5.0
-  firebase_messaging: ^10.0.5
+  firebase_messaging: ^11.4.4
   flutter:
     sdk: flutter
-  flutter_blurhash: ^0.6.0
+  flutter_blurhash: ^0.7.0
   flutter_cache_manager: ^3.1.2
-  flutter_html: ^2.1.1
-  flutter_local_notifications: ^8.1.1+1
+  flutter_html: ^3.0.0-alpha.5
+  flutter_local_notifications: ^9.6.1
   flutter_markdown: ^0.6.4
-  flutter_svg: ^0.22.0
+  flutter_svg: ^1.1.1+1
   fluttertoast: ^8.0.7
   get: ^4.2.4
   html: ^0.15.0
   import_sorter: ^4.6.0
-  introduction_screen: ^2.1.0
+  introduction_screen: ^3.0.2
   material_floating_search_bar: ^0.3.4
   package_info_plus: ^1.0.5
   path_provider: ^2.0.2
   search_choices: ^2.0.6
-  share_plus: ^2.1.4
+  share_plus: ^4.0.10
   shared_preferences: ^2.0.6
   shimmer: ^2.0.0
   shimmer_image: ^0.0.2
   sqflite: ^2.0.0+3
   url_launcher: ^6.0.9
   validators: ^3.0.0
-  webview_flutter: ^2.0.12
+  webview_flutter: ^3.0.4
 description: A new Flutter project.
 dev_dependencies:
   flutter_launcher_icons: ^0.9.1
-  flutter_lints: ^1.0.4
-  flutter_native_splash: ^1.2.1
+  flutter_lints: ^2.0.1
+  flutter_native_splash: ^2.2.3+1
   flutter_test:
     sdk: flutter
 environment:
-  sdk: '>=2.12.0<3.0.0'
+  sdk: ">=2.12.0<3.0.0"
 flutter:
   assets:
     - assets/images/

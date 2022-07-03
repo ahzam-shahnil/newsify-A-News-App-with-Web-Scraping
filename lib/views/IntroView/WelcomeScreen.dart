@@ -1,7 +1,6 @@
 // Flutter imports:
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -40,16 +39,16 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const bodyStyle = const TextStyle(fontSize: 19.0);
+    const bodyStyle = TextStyle(fontSize: 19.0);
 
     //?setting portrait only orientation
     // ignore: unnecessary_statements
     kPortraitOnly;
 
-    const pageDecoration = const PageDecoration(
+    const pageDecoration = PageDecoration(
       titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
       bodyTextStyle: bodyStyle,
-      descriptionPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+      bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
       pageColor: Colors.transparent,
       imagePadding: EdgeInsets.zero,
     );
@@ -67,8 +66,8 @@ class WelcomeScreen extends StatelessWidget {
         height: 60,
         child: TextButton(
           child: const Text(
-            'Let\s go right away!',
-            style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+            'Lets go right away!',
+            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
           ),
           onPressed: () => _onIntroEnd(context),
         ),
@@ -93,31 +92,29 @@ class WelcomeScreen extends StatelessWidget {
       onDone: () => _onIntroEnd(context),
       //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
       showSkipButton: true,
-      skipFlex: 0,
 
       nextFlex: 0,
       //rtl: true, // Display as right-to-left
       skip: const Text('Skip'),
       next: const Icon(Icons.arrow_forward),
-      done: const Text('Start',
-          style: const TextStyle(fontWeight: FontWeight.w600)),
+      done: const Text('Start', style: TextStyle(fontWeight: FontWeight.w600)),
       curve: Curves.fastLinearToSlowEaseIn,
       controlsMargin: const EdgeInsets.all(16),
       controlsPadding: kIsWeb
           ? const EdgeInsets.all(12.0)
           : const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
       dotsDecorator: const DotsDecorator(
-        size: const Size(10.0, 10.0),
-        color: const Color(0xFFBDBDBD),
-        activeSize: const Size(22.0, 10.0),
-        activeShape: const RoundedRectangleBorder(
-          borderRadius: const BorderRadius.all(Radius.circular(25.0)),
+        size: Size(10.0, 10.0),
+        color: Color(0xFFBDBDBD),
+        activeSize: Size(22.0, 10.0),
+        activeShape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(25.0)),
         ),
       ),
       dotsContainerDecorator: ShapeDecoration(
         color: Colors.grey.shade300,
         shape: const RoundedRectangleBorder(
-          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
       ),
     );
