@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 # Welcome to [Newsify](https://play.google.com/store/apps/details?id=com.proapps.newsify)
 
 **Stay up to date**
